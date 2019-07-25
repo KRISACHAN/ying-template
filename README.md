@@ -7,8 +7,6 @@
 ### 安装配置
 
 1. 下载并安装node: https://nodejs.org/zh-cn/download/
-2. 进入项目安装依赖包：npm install
-3. 安装JAVA SDK：https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 ### 运行命令
 

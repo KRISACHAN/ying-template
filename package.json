@@ -56,7 +56,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "mocha": "^5.2.0",
     "nightwatch": "^1.0.18",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "npx": "^10.2.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "phantomjs-prebuilt": "^2.1.16",
