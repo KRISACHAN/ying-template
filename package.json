@@ -11,8 +11,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-transform-runtime": "^7.2.0",
-    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-typescript": "^7.6.0",
+    "@typescript-eslint/parser": "^2.3.2",
     "acorn": "^6.0.5",
     "autoprefixer": "^9.4.2",
     "babel-loader": "^8.0.5",
@@ -75,6 +79,9 @@
     "sinon": "^7.2.3",
     "sinon-chai": "^3.3.0",
     "style-loader": "^0.23.1",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.3",
+    "typescript-eslint-parser": "^22.0.0",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
     "webpack-merge": "^4.2.1"
