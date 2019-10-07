@@ -30,7 +30,7 @@ const webpackProd = {
                 ],
             },
             {
-                test: /(\.jsx|\.js)$/,
+                test: /(\.jsx|\.js|\.ts|\.tsx)$/,
                 use: [
                     'babel-loader'
                 ],
