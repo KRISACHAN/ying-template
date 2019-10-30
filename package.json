@@ -31,6 +31,7 @@
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.10",
     "cssnext": "^1.8.4",
+    "dotenv": "^8.2.0",
     "es6-promise": "^4.2.5",
     "eslint": "^5.12.0",
     "eslint-config-standard": "^12.0.0",

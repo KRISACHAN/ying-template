@@ -10,16 +10,6 @@ const {
     }
 } = require('./config.js');
 
-const {
-    HOST,
-    PORT
-} = process.env;
-
-console.log({
-    HOST,
-    PORT
-})
-
 const webpackDev = {
     'mode': 'development',
     'devtool': 'cheap-module-eval-source-map',

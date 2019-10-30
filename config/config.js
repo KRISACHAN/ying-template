@@ -1,16 +1,18 @@
 const path = require('path');
 const fs = require('fs');
-const project = process.cwd(); // 项目目录
+const dotenv = require('dotenv');
+const project = process.cwd();
 const resolve = dir => path.join(__dirname, '..', dir); // 获取文件夹
-const env_array = fs.readFileSync(project + '/.env', 'utf8').split('\r\n'); // 获取环境变量
-env_array.forEach(e => {
-    let [key, value] = e.split('=');
-    if (value === 'false' || value === 'true') {
-        process.env[key] = JSON.parse(value);
-    } else {
-        process.env[key] = value;
-    }
-}); // 设置环境变量
+dotenv.config(); // 添加环境变量
+// const env_array = fs.readFileSync(project + '/.env', 'utf8').split('\r\n'); // 获取环境变量
+// env_array.forEach(e => {
+//     let [key, value] = e.split('=');
+//     if (value === 'false' || value === 'true') {
+//         process.env[key] = JSON.parse(value);
+//     } else {
+//         process.env[key] = value;
+//     }
+// }); // 设置环境变量
 
 const config = {
     'project': project, // 项目目录
