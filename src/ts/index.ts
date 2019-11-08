@@ -1,4 +1,5 @@
 'use strict'
+import '@/css/index.css'
 import '@/sass/index.scss'
 let a: number = 100
 let b: number = 500

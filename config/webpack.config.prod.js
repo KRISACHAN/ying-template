@@ -60,7 +60,7 @@ const webpackProd = {
         }),
         new compressionPlugin({
             filename: '[path].gz[query]',
-            test: /(\.jsx|\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)$/,
+            test: /(\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)$/,
             cache: true,
             algorithm: 'gzip',
             deleteOriginalAssets: false,
@@ -68,7 +68,7 @@ const webpackProd = {
         }),
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/g,
-            cssProcessor: require('cssnano'),
+            // cssProcessor: require('cssnano'),
             cssProcessorPluginOptions: {
                 preset: [
                     'default', 
