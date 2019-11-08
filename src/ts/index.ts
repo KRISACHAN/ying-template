@@ -7,11 +7,20 @@ console.log(add(a, b))
 let c: string = 'abc'
 console.log(c)
 
-class Point {
-  constructor(x: any, y: any) {
-    this.x = x
-    this.y = y
-  }
+class biu {
+    static a: string = 'foo'
+    static b: any
+    a = 'bar'
+    b = 'yingyingying'
 }
 
-let p1 = new Point(1, 2)
+const foo = {
+    bar: {
+        baz() {
+            return '10'
+        }
+    }
+}
+
+let x = foo?.bar.baz()
+console.log(x)
