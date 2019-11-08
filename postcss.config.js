@@ -17,10 +17,6 @@ const postcssObj = {
             'mediaQuery': false
         },
         'autoprefixer': {},
-        'postcss-image-set-function': {
-            'oninvalid': 'throw',
-            'preserve': false
-        },
         'postcss-nesting': {}
     }
 };
