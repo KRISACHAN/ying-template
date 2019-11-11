@@ -1,7 +1,7 @@
 {
-  "name": "mpa",
-  "version": "0.0.1",
-  "description": "mpa",
+  "name": "ying-template",
+  "version": "1.0.0",
+  "description": "a template with ts by kris",
   "main": "index.js",
   "dependencies": {
     "@babel/runtime": "^7.0.0",
@@ -19,7 +19,7 @@
     "@babel/preset-typescript": "^7.6.0",
     "@typescript-eslint/parser": "^2.6.1",
     "@typescript-eslint/typescript-estree": "^2.6.1",
-    "acorn": "^6.0.5",
+    "acorn": "^7.1.0",
     "autoprefixer": "^9.4.2",
     "babel-loader": "^8.0.5",
     "babel-polyfill": "^6.26.0",

@@ -6,7 +6,6 @@ const {
     html,
     ignorePages,
     project,
-    config,
     dev: {
         alias,
         include,
@@ -14,9 +13,6 @@ const {
     },
     build
 } = require('./config.js');
-
-// 获取文件夹目录
-const resolve = dir => path.join(__dirname, '..', dir);
 
 // 获取html文件名，生成多页面入口
 const getPagesEnter = path => {

@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 const dotenv = require('dotenv');
 const project = process.cwd();
 const resolve = dir => path.join(__dirname, '..', dir); // 获取文件夹
