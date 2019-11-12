@@ -1,46 +1,43 @@
-const webpackConfig = require('./config/webpack.config.test.js');
-
+const webpackConfig = require('./config/webpack.config.test.js')
 const karmaConfig = config => {
     config.set({
-        'browsers': [
+        browsers: [
             'PhantomJS'
         ],
-        'frameworks': [
+        frameworks: [
             'mocha',
-            'chai',
             'sinon-chai',
             'phantomjs-shim'
         ],
-        'reporters': [
+        reporters: [
             'spec',
             'coverage'
         ],
-        'files': [
+        files: [
             'test/index.js'
         ],
-        'preprocessors': {
+        preprocessors: {
             'test/index.js': [
                 'webpack',
                 'sourcemap'
             ]
         },
-        'webpack': webpackConfig,
-        'webpackMiddleware': {
-            'noInfo': true
+        webpack: webpackConfig,
+        webpackMiddleware: {
+            noInfo: true
         },
-        'coverageReporter': {
-            'dir': 'test/coverage',
-            'reporters': [
+        coverageReporter: {
+            dir: 'test/coverage',
+            reporters: [
                 {
-                    'type': 'lcov',
-                    'subdir': '.'
+                    type: 'lcov',
+                    subdir: '.'
                 },
                 {
-                    'type': 'text-summary'
+                    type: 'text-summary'
                 }
             ]
         }
     })
-};
-
-module.exports = karmaConfig;
+}
+module.exports = karmaConfig
