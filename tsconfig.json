@@ -10,9 +10,11 @@
     "watch": true,
     "paths": {
       "@": ["src"],
+      "src": ["src"],
       "test": ["test"],
       "core": ["core"],
       "static": ["static"]
-    }
+    },
+    "typeRoots": ["node_modules/@types"]
   }
 }

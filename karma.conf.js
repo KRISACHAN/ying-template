@@ -7,6 +7,7 @@ const karmaConfig = config => {
         ],
         'frameworks': [
             'mocha',
+            'chai',
             'sinon-chai',
             'phantomjs-shim'
         ],

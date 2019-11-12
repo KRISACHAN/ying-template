@@ -10,6 +10,7 @@ const config = {
     'dev': { // 开发环境配置
         'alias': { // 路径重定向
             '@': resolve('src'),
+            'src': resolve('src'),
             'test': resolve('test'),
             'core': resolve('core'),
             'static': resolve('static')

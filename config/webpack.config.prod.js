@@ -1,21 +1,20 @@
 // 生产环境配置
-const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
-const cleanWebpackPlugin = require('clean-webpack-plugin');
-const uglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const compressionPlugin = require('compression-webpack-plugin');
-const webpackBase = require('./webpack.config.base.js');
+const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
+const webpackBase = require('./webpack.config.base.js')
 const {
     project
-} = require('./config.js');
-
+} = require('./config.js')
 const webpackProd = {
     mode: 'production',
     devtool: 'source-map',
     output: {
-        filename: 'static/js/[name].[chunkhash:8].bundle.js',
+        filename: 'static/js/[name].[chunkhash:8].bundle.js'
     },
     module: {
         rules: [
@@ -26,14 +25,14 @@ const webpackProd = {
                     'css-loader',
                     'postcss-loader',
                     'sass-loader',
-                    'less-loader',
+                    'less-loader'
                 ],
             },
             {
                 test: /(\.jsx|\.js|\.ts|\.tsx)$/,
                 use: [
                     'babel-loader'
-                ],
+                ]
             }
         ]
     },
@@ -43,10 +42,10 @@ const webpackProd = {
             chunkFilename: 'static/css/[id].[chunkhash:8].css'
         }),
         new webpack.HashedModuleIdsPlugin(),
-        new cleanWebpackPlugin(['./dist/'], {
+        new CleanWebpackPlugin(['./dist/'], {
             root: project
         }),
-        new uglifyJSPlugin({
+        new UglifyJSPlugin({
             sourceMap: true,
             exclude: /node_modules/,
             uglifyOptions: {
@@ -58,7 +57,7 @@ const webpackProd = {
                 comments: false
             }
         }),
-        new compressionPlugin({
+        new CompressionPlugin({
             filename: '[path].gz[query]',
             test: /(\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)$/,
             cache: true,
