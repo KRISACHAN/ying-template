@@ -24,4 +24,5 @@ const foo = {
 }
 
 let x = foo?.bar.baz()
+
 console.log(x)
