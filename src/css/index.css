@@ -1,5 +1,5 @@
 article {
-  & p {
-    color: #333;
-  }
+    & p {
+        color: #333;
+    }
 }

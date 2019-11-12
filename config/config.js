@@ -12,7 +12,6 @@ const config = {
             '@': resolve('src'),
             'test': resolve('test'),
             'core': resolve('core'),
-            'libs': resolve('libs'),
             'static': resolve('static')
         },
         'include': [ // 处理的文件夹
