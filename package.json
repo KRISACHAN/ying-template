@@ -17,11 +17,7 @@
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-typescript": "^7.6.0",
-    "@types/chai": "^4.2.4",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^12.12.7",
-    "@types/webpack": "^4.39.8",
-    "@types/webpack-env": "^1.14.1",
+    "@types/jest": "^24.0.23",
     "@typescript-eslint/parser": "^2.6.1",
     "@typescript-eslint/typescript-estree": "^2.6.1",
     "acorn": "^7.1.0",
@@ -52,6 +48,7 @@
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "jasmine-core": "^3.3.0",
+    "jest": "^24.9.0",
     "karma": "^4.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
@@ -62,7 +59,6 @@
     "karma-sinon-chai": "^2.0.2",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.32",
-    "karma-typescript": "^4.1.1",
     "karma-webpack": "^3.0.5",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
@@ -88,6 +84,7 @@
     "sinon": "^7.2.3",
     "sinon-chai": "^3.3.0",
     "style-loader": "^0.23.1",
+    "ts-jest": "^24.1.0",
     "ts-loader": "^6.2.0",
     "typescript": "^3.7.2",
     "uglifyjs-webpack-plugin": "^2.1.1",
@@ -96,12 +93,13 @@
     "webpack-merge": "^4.2.1"
   },
   "scripts": {
-    "build": "webpack  --progress --color --config ./config/webpack.config.prod.js",
-    "dev": "webpack-dashboard -- webpack-dev-server --progress --color --open --config ./config/webpack.config.dev.js",
-    "test": "karma start karma.conf.js --single-run"
+    "build": "webpack --progress --config ./config/webpack.config.prod.js",
+    "dev": "webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
+    "test": "jest"
   },
   "keywords": [
-    "js"
+    "js",
+    "py"
   ],
   "author": "chenjinwen77@foxmail.com",
   "license": "ISC",

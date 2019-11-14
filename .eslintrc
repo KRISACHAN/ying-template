@@ -6,8 +6,7 @@
         "sourceType": "module",
         "ecmaFeatures": {
             "modules": true
-        },
-        "project": "./tsconfig.json"
+        }
     },
     "env": {
         "browser": true,
