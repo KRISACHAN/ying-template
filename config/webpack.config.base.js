@@ -42,18 +42,6 @@ HTMLArr.forEach(page => {
     const htmlPlugin = new HTMLWebpackPlugin(htmlConfig)
     HTMLPlugins.push(htmlPlugin)
 })
-// 是否打开esLint
-const createLintingRule = () => ({
-    test: /(\.jsx|\.js|\.ts|\.tsx)$/,
-    loader: 'eslint-loader',
-    enforce: 'pre',
-    include,
-    exclude,
-    options: {
-        formatter: require('eslint-friendly-formatter'),
-        emitWarning: true
-    }
-});
 
 const baseConfig = {
     context: project, // 入口、插件路径会基于context查找
@@ -64,11 +52,11 @@ const baseConfig = {
         path: build // 打包路径
     },
     resolve: {
-        alias // 文件名简写
+        alias, // 文件名简写
+        extensions: ['.ts', '.js', '.tsx', '.jsx', '.json'] // 文件查询扩展
     },
     module: {
         rules: [
-            ...(process.env.USEESLINT ? [createLintingRule()] : []),
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 include,

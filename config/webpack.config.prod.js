@@ -18,7 +18,7 @@ const webpackProd = {
     },
     devtool: 'source-map',
     output: {
-        filename: 'static/js/[name].[chunkhash:8].bundle.js',
+        filename: 'js/[name].[chunkhash:8].bundle.js',
     },
     module: {
         rules: [
@@ -42,8 +42,8 @@ const webpackProd = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'static/css/[name].[chunkhash:8].css',
-            chunkFilename: 'static/css/[id].[chunkhash:8].css'
+            filename: 'css/[name].[chunkhash:8].css',
+            chunkFilename: 'css/[id].[chunkhash:8].css'
         }),
         new webpack.HashedModuleIdsPlugin(),
         new cleanWebpackPlugin(['./dist/'], {
@@ -71,7 +71,6 @@ const webpackProd = {
         }),
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/g,
-            // cssProcessor: require('cssnano'),
             cssProcessorPluginOptions: {
                 preset: [
                     'default', 
@@ -86,18 +85,6 @@ const webpackProd = {
         })
     ],
     optimization: {}
-    // optimization: {
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             commons: {
-    //                 test: /([\\/]node_modules[\\/]|[\\/]vendors[\\/])/,
-    //                 name: 'vendors',
-    //                 chunks: 'all',
-    //                 enforce: true
-    //             }
-    //         }
-    //     }
-    // }
 };
 
 module.exports = webpackMerge(webpackBase, webpackProd);

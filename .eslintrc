@@ -1,12 +1,17 @@
 {
     "root": true,
     "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 2019,
         "sourceType": "module",
         "ecmaFeatures": {
-            "modules": true
-        }
+            "modules": true,
+            "jsx": true
+        },
+        "project": "./tsconfig.json"
     },
     "env": {
         "browser": true,

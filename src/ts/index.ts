@@ -1,10 +1,12 @@
 'use strict'
 import '@/css/index.css'
 import '@/sass/index.scss'
+import {
+    sum
+} from '@/ts/math'
 let a: number = 100
 let b: number = 500
-const add = (a: number, b: number): number => (a + b)
-console.log(add(a, b))
+console.log(sum(a, b))
 let c: string = 'abc'
 console.log(c)
 

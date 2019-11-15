@@ -1,6 +1,5 @@
 /build/
 /config/
 /dist/
-/*.js
-/*.ts
-/test/unit/coverage/
+/static/
+/*.*
