@@ -1,15 +1,15 @@
 // 生产环境配置
-const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
-const cleanWebpackPlugin = require('clean-webpack-plugin');
-const uglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const compressionPlugin = require('compression-webpack-plugin');
-const webpackBase = require('./webpack.config.base.js');
+const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
+const cleanWebpackPlugin = require('clean-webpack-plugin')
+const uglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const compressionPlugin = require('compression-webpack-plugin')
+const webpackBase = require('./webpack.config.base.js')
 const {
     project
-} = require('./config.js');
+} = require('./config.js')
 
 const webpackProd = {
     mode: 'production',
@@ -85,6 +85,5 @@ const webpackProd = {
         })
     ],
     optimization: {}
-};
-
-module.exports = webpackMerge(webpackBase, webpackProd);
+}
+module.exports = webpackMerge(webpackBase, webpackProd)

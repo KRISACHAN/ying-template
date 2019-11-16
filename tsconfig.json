@@ -1,32 +1,32 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "esnext",
-    "target": "es6",
-    "allowJs": true,
-    "alwaysStrict": true,
-    "watch": true,
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "declaration": true,
-    "paths": {
-      "@": ["src"],
-      "src": ["src"],
-      "tests": ["tests"],
-      "core": ["core"],
-      "static": ["static"]
-    },
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "esnext",
-      "dom",
-      "es5",
-      "scripthost",
-      "es2015.promise"
-    ]
-  }
+    "compilerOptions": {
+        "baseUrl": ".",
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "module": "esnext",
+        "target": "es6",
+        "allowJs": true,
+        "alwaysStrict": true,
+        "watch": true,
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "declaration": true,
+        "paths": {
+            "@": ["src"],
+            "src": ["src"],
+            "tests": ["tests"],
+            "core": ["core"],
+            "static": ["static"]
+        },
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "esnext",
+            "dom",
+            "es5",
+            "scripthost",
+            "es2015.promise"
+        ]
+    }
 }

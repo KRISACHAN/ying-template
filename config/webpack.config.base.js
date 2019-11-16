@@ -38,7 +38,7 @@ HTMLArr.forEach(page => {
     } else {
         // 没有入口js文件，chunk为空
         htmlConfig.chunks = []
-    };
+    }
     const htmlPlugin = new HTMLWebpackPlugin(htmlConfig)
     HTMLPlugins.push(htmlPlugin)
 })
