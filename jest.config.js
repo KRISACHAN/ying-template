@@ -1,14 +1,17 @@
 const path = require('path')
 const jestConfig = {
     rootDir: path.join(__dirname, ''),
+    roots: ["<rootDir>/tests"],
     moduleFileExtensions: [
         'js',
         'jsx',
         'ts',
-        'tsx'
+        'tsx',
+        'json',
+        'node'
     ],
-    testMatch: [
-        '**/tests/**/?(*.)(spec).(js|ts|jsx|tsx)'
+    testPathIgnorePatterns: [
+        '/node_modules/'
     ],
     coveragePathIgnorePatterns: [
         'node_modules/',
@@ -21,7 +24,12 @@ const jestConfig = {
         'text-summary'
     ],
     transform: {
-        '^.+\\.(tsx|ts)?$': 'ts-jest'
-    }
+        "^.+\\.ts?$": "ts-jest"
+    },
+    testMatch: [
+        "<rootDir>/tests/**/__tests__/**/*.[jt]s?(x)",
+        "<rootDir>/tests/**/*(*.)@(spec|test).[tj]s?(x)"
+    ],
+    collectCoverage: true
 }
 module.exports = jestConfig

@@ -2,7 +2,8 @@
     "root": true,
     "parser": "@typescript-eslint/parser",
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "@types/node"
     ],
     "parserOptions": {
         "ecmaVersion": 2019,
