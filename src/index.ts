@@ -2,10 +2,12 @@
 import '@/css/index.css'
 import '@/sass/index.scss'
 import {
-    BubbleSort,
+    BubbleSort
+} from './ts/sort'
+import {
     RandomList,
     SortedList
-} from 'src/ts/sort'
+} from './ts/utils'
 
 const BubbleSortIsCurrent = BubbleSort(RandomList)
                                 .every((num, idx) => {
