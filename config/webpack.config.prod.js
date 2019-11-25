@@ -1,24 +1,21 @@
 // 生产环境配置
-const webpack = require('webpack')
-const webpackMerge = require('webpack-merge')
-const cleanWebpackPlugin = require('clean-webpack-plugin')
-const uglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const compressionPlugin = require('compression-webpack-plugin')
-const webpackBase = require('./webpack.config.base.js')
+const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
+const cleanWebpackPlugin = require('clean-webpack-plugin');
+const uglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const compressionPlugin = require('compression-webpack-plugin');
+const webpackBase = require('./webpack.config.base.js');
 const {
     project
-} = require('./config.js')
+} = require('./config.js');
 
 const webpackProd = {
     mode: 'production',
-    stats: {
-        colors: true
-    },
     devtool: 'source-map',
     output: {
-        filename: 'js/[name].[chunkhash:8].bundle.js',
+        filename: 'static/js/[name].[chunkhash:8].bundle.js',
     },
     module: {
         rules: [
@@ -33,7 +30,7 @@ const webpackProd = {
                 ],
             },
             {
-                test: /(\.jsx|\.js|\.ts|\.tsx)$/,
+                test: /(\.jsx|\.js)$/,
                 use: [
                     'babel-loader'
                 ],
@@ -42,8 +39,8 @@ const webpackProd = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'css/[name].[chunkhash:8].css',
-            chunkFilename: 'css/[id].[chunkhash:8].css'
+            filename: 'static/css/[name].[chunkhash:8].css',
+            chunkFilename: 'static/css/[id].[chunkhash:8].css'
         }),
         new webpack.HashedModuleIdsPlugin(),
         new cleanWebpackPlugin(['./dist/'], {
@@ -63,7 +60,7 @@ const webpackProd = {
         }),
         new compressionPlugin({
             filename: '[path].gz[query]',
-            test: /(\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)$/,
+            test: /(\.jsx|\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)$/,
             cache: true,
             algorithm: 'gzip',
             deleteOriginalAssets: false,
@@ -71,6 +68,7 @@ const webpackProd = {
         }),
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'),
             cssProcessorPluginOptions: {
                 preset: [
                     'default', 
@@ -85,5 +83,18 @@ const webpackProd = {
         })
     ],
     optimization: {}
-}
-module.exports = webpackMerge(webpackBase, webpackProd)
+    // optimization: {
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             commons: {
+    //                 test: /([\\/]node_modules[\\/]|[\\/]vendors[\\/])/,
+    //                 name: 'vendors',
+    //                 chunks: 'all',
+    //                 enforce: true
+    //             }
+    //         }
+    //     }
+    // }
+};
+
+module.exports = webpackMerge(webpackBase, webpackProd);

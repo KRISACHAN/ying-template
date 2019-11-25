@@ -1,5 +1,4 @@
-article {
-    & p {
-        color: #333;
-    }
+.body {
+    width: 750px;
+    height: 1334px;
 }
