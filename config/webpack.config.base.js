@@ -34,7 +34,7 @@ HTMLArr.forEach(page => {
     if (hasIgnorePages === -1) {
         // 有入口js文件的html，添加本页的入口js，与公共js，并将入口js写入Entries中
         htmlConfig.chunks = [page, 'vendors']
-        Entries[page] = `./src/ts/${page}.ts`
+        Entries[page] = `./src/${page}.ts`
     } else {
         // 没有入口js文件，chunk为空
         htmlConfig.chunks = []

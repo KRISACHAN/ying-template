@@ -33,15 +33,22 @@ const webpackDev = {
     module: {
         rules: [
             {
-                test: /\.(le|sa|sc|c)ss$/,
-                include,
-                exclude,
-                use: [
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader',
-                    'less-loader'
-                ]
+                'test': /\.css$/,
+                'include': include,
+                'exclude': exclude,
+                'use': ['style-loader', 'css-loader', 'postcss-loader']
+            },
+            {
+                'test': /\.scss$/,
+                'include': include,
+                'exclude': exclude,
+                'use': ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+            },
+            {
+                'test': /\.less$/,
+                'include': include,
+                'exclude': exclude,
+                'use': ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
             }
         ]
     },
