@@ -64,6 +64,7 @@
     "postcss-url": "^8.0.0",
     "precss": "^4.0.0",
     "proxy": "^0.2.4",
+    "puppeteer": "^2.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-jest": "^24.1.0",
