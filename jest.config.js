@@ -14,21 +14,25 @@ const jestConfig = {
         '/node_modules/'
     ],
     coveragePathIgnorePatterns: [
-        'node_modules/',
-        'dist/',
-        'config/',
-        'view/'
+        '/node_modules/',
+        '/dist/',
+        '/config/',
+        '/view/'
     ],
     coverageReporters: [
+        'json',
+        'lcov',
+        'text',
+        'clover',
         'html',
         'text-summary'
     ],
     transform: {
-        "^.+\\.ts?$": "ts-jest"
+        '^.+\\.(ts|tsx)$': 'ts-jest'
     },
     testMatch: [
-        "<rootDir>/tests/**/__tests__/**/*.[jt]s?(x)",
-        "<rootDir>/tests/**/*(*.)@(spec|test).[tj]s?(x)"
+        '<rootDir>/tests/*.(ts|tsx|js|jsx)',
+        '<rootDir>/tests/**/*.(ts|tsx|js|jsx)'
     ],
     collectCoverage: true
 }
