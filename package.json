@@ -4,7 +4,6 @@
   "description": "a template with ts by kris",
   "main": "index.js",
   "dependencies": {
-    "@babel/runtime": "^7.0.0",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
@@ -12,11 +11,15 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "@babel/plugin-proposal-private-methods": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-typescript": "^7.6.0",
+    "@babel/runtime": "^7.9.2",
+    "@babel/runtime-corejs2": "^7.9.2",
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.8",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
@@ -31,6 +34,7 @@
     "clean-webpack-plugin": "^1.0.0",
     "compression-webpack-plugin": "^2.0.0",
     "copy-webpack-plugin": "^4.6.0",
+    "core-js": "^3.6.5",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.10",
@@ -91,9 +95,9 @@
     "npm": ">= 3.0.0"
   },
   "browserslist": [
-    "> 1%",
+    "> 5%",
     "last 2 versions",
-    "not ie <= 9",
+    "not ie <= 8",
     "Android >= 5.0"
   ]
 }
