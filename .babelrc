@@ -3,7 +3,12 @@
         [
             "@babel/preset-env",
             {
-                "useBuiltIns": "entry"
+                "useBuiltIns": "usage",
+                "corejs": 3,
+                "targets": {
+                    "esmodules": true,
+                    "chrome": "49"
+                }
             }
         ],
         "@babel/preset-typescript"
