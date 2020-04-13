@@ -6,7 +6,7 @@
 鱼头的微信号是：krisChans95
 也可以扫码关注公众号，订阅更多精彩内容。
 
-![https://fish-pond-1253945200.cos.ap-guangzhou.myqcloud.com/img/base/qrcode-all1.png](https://fish-pond-1253945200.cos.ap-guangzhou.myqcloud.com/img/base/qrcode-all1.png)
+![./static/qrcode-all1.png](./static/qrcode-all1.png)
 
 ## 运行环境
 
