@@ -34,7 +34,7 @@ const webpackProd = {
             },
             {
                 test: /(\.jsx|\.js|\.ts|\.tsx)$/,
-                use: ['babel-loader', 'eslint-loader'],
+                use: ['babel-loader'],
             },
         ],
     },
@@ -51,18 +51,18 @@ const webpackProd = {
          * @question
          * @desc 加上之后，打包就报错。。。
          */
-        // new uglifyJSPlugin({
-        //     sourceMap: true,
-        //     exclude: pro.exclude,
-        //     uglifyOptions: {
-        //         compress: {
-        //             drop_console: true,
-        //             drop_debugger: true,
-        //             warnings: false,
-        //         },
-        //         comments: false,
-        //     },
-        // }),
+        new uglifyJSPlugin({
+            sourceMap: true,
+            exclude: pro.exclude,
+            uglifyOptions: {
+                compress: {
+                    drop_console: true,
+                    drop_debugger: true,
+                    warnings: false,
+                },
+                comments: false,
+            },
+        }),
         new compressionPlugin({
             filename: '[path].gz[query]',
             test: /(\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)$/,

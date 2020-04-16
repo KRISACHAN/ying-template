@@ -6,18 +6,15 @@ const {
     html,
     ignorePages,
     project,
-    dev: {
-        alias,
-        include,
-        exclude
-    },
-    build
+    dev: { alias, include, exclude },
+    build,
 } = require('./config.js')
 // 获取html文件名，生成多页面入口
 const getPagesEnter = path => {
-    const dirArr = fs.readdirSync(path);
-    const filesArr = dirArr.filter(e => e.indexOf('html') >= 0)
-                           .map(e => e.replace('.html', ''))
+    const dirArr = fs.readdirSync(path)
+    const filesArr = dirArr
+        .filter(e => e.indexOf('html') >= 0)
+        .map(e => e.replace('.html', ''))
     return filesArr
 }
 const HTMLArr = getPagesEnter(html)
@@ -28,7 +25,7 @@ const Entries = {} // 保存入口列表
 HTMLArr.forEach(page => {
     const htmlConfig = {
         filename: `${page}.html`,
-        template: path.join(html, `./${page}.html`) // 模板文件
+        template: path.join(html, `./${page}.html`), // 模板文件
     }
     const hasIgnorePages = ignorePages.findIndex(val => val === page)
     if (hasIgnorePages === -1) {
@@ -49,11 +46,11 @@ const baseConfig = {
         ...Entries,
     },
     output: {
-        path: build // 打包路径
+        path: build, // 打包路径
     },
     resolve: {
         alias, // 文件名简写
-        extensions: ['.ts', '.js', '.tsx', '.jsx', '.json'] // 文件查询扩展
+        extensions: ['.ts', '.js', '.tsx', '.jsx', '.json'], // 文件查询扩展
     },
     module: {
         rules: [
@@ -65,20 +62,20 @@ const baseConfig = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: 'static/fonts/[name]-[chunkhash].[ext]'
-                        }
-                    }
-                ]
+                            name: 'static/fonts/[name]-[chunkhash].[ext]',
+                        },
+                    },
+                ],
             },
             {
                 test: /(\.jsx|\.js|\.ts|\.tsx)$/,
                 use: [
                     {
-                        'loader': 'babel-loader'
-                    }
+                        loader: 'babel-loader',
+                    },
                 ],
                 include,
-                exclude
+                exclude,
             },
             {
                 test: /\.(gif|jpg|jpeg|png|svg|webp)$/,
@@ -90,12 +87,12 @@ const baseConfig = {
                         options: {
                             limit: 8192,
                             name: 'static/img/[name]-[chunkhash].[ext]',
-                            fallback: 'file-loader'
-                        }
-                    }
-                ]
-            }
-        ]
+                            fallback: 'file-loader',
+                        },
+                    },
+                ],
+            },
+        ],
     },
     externals: {},
     plugins: [
@@ -103,9 +100,9 @@ const baseConfig = {
         new CopyWebpackPlugin([
             {
                 from: 'static',
-                to: 'static'
-            }
-        ])
-    ]
+                to: 'static',
+            },
+        ]),
+    ],
 }
 module.exports = baseConfig
