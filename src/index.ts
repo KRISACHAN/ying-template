@@ -1,5 +1,10 @@
 'use strict'
 import 'src/style/index.css'
+import _ from 'lodash'
+
+const chunked = _.chunk(['a', 'b', 'c', 'd'], 2)
+console.log(chunked)
+
 import qrcodeImg from './img/qrcode-all1.png'
 const radio = 0.5
 const width = 914

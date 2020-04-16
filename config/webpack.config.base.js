@@ -60,7 +60,7 @@ const baseConfig = {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
-                        name: 'font/[name]-[hash:8].[ext]'
+                        name: 'font/[name]-[hash:8].[ext]',
                     },
                 },
                 include,
@@ -72,7 +72,7 @@ const baseConfig = {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
-                        name: 'img/[name]-[hash:8].[ext]'
+                        name: 'img/[name]-[hash:8].[ext]',
                     },
                 },
                 include,
@@ -90,7 +90,10 @@ const baseConfig = {
             },
         ],
     },
-    externals: {},
+    externals: {
+        jquery: 'jQuery',
+        _: 'lodash',
+    },
     plugins: [
         ...HTMLPlugins,
         new CopyWebpackPlugin([

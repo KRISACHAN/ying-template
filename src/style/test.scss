@@ -1,0 +1,18 @@
+html,
+body,
+section,
+div,
+img {
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+.box {
+    width: 300px;
+    height: 300px;
+    border: 1px solid;
+}
