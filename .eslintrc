@@ -3,8 +3,12 @@
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint", "prettier"],
     "extends": ["plugin:@typescript-eslint/recommended","plugin:prettier/recommended"],
+    "plugins": [
+        "@typescript-eslint",
+        "@types/node"
+    ],
     "parserOptions": {
-        "ecmaVersion": 2019,
+        "ecmaVersion": 2020,
         "sourceType": "module",
         "ecmaFeatures": {
             "modules": true,

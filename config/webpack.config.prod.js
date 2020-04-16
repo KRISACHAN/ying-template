@@ -18,7 +18,23 @@ const webpackProd = {
     },
     devtool: 'source-map',
     output: {
-        filename: 'js/[name].[chunkhash:8].js',
+        filename: 'js/[name].[chunkhash:8].bundle.js',
+    },
+    optimization: {
+        minimizer: [
+            new uglifyJSPlugin({
+                sourceMap: true,
+                exclude: pro.exclude,
+                uglifyOptions: {
+                    compress: {
+                        drop_console: true,
+                        drop_debugger: true,
+                        warnings: false,
+                    },
+                    comments: false,
+                },
+            }),
+        ],
     },
     module: {
         rules: [
@@ -47,22 +63,6 @@ const webpackProd = {
         new cleanWebpackPlugin(['./dist/'], {
             root: project,
         }),
-        /**
-         * @question
-         * @desc 加上之后，打包就报错。。。
-         */
-        new uglifyJSPlugin({
-            sourceMap: true,
-            exclude: pro.exclude,
-            uglifyOptions: {
-                compress: {
-                    drop_console: true,
-                    drop_debugger: true,
-                    warnings: false,
-                },
-                comments: false,
-            },
-        }),
         new compressionPlugin({
             filename: '[path].gz[query]',
             test: /(\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)$/,
@@ -87,6 +87,5 @@ const webpackProd = {
         }),
         new BundleAnalyzerPlugin(),
     ],
-    optimization: {},
 }
 module.exports = webpackMerge(webpackBase, webpackProd)

@@ -56,16 +56,27 @@ const baseConfig = {
         rules: [
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192,
+                        name: 'font/[name]-[hash:8].[ext]'
+                    },
+                },
                 include,
                 exclude,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: 'static/fonts/[name]-[chunkhash].[ext]',
-                        },
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192,
+                        name: 'img/[name]-[hash:8].[ext]'
                     },
-                ],
+                },
+                include,
+                exclude,
             },
             {
                 test: /(\.jsx|\.js|\.ts|\.tsx)$/,
@@ -76,21 +87,6 @@ const baseConfig = {
                 ],
                 include,
                 exclude,
-            },
-            {
-                test: /\.(gif|jpg|jpeg|png|svg|webp)$/,
-                include,
-                exclude,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: 'static/img/[name]-[chunkhash].[ext]',
-                            fallback: 'file-loader',
-                        },
-                    },
-                ],
             },
         ],
     },

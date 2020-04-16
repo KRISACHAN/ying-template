@@ -5,7 +5,7 @@ const postcssConfig = {
             browsers: 'last 2 versions',
             stage: 3,
             features: {},
-            cssnano: {},
+            cssnano: {}
         },
         'postcss-px-to-viewport': {
             unitToConvert: 'px',
@@ -14,14 +14,14 @@ const postcssConfig = {
             unitPrecision: 3,
             viewportUnit: 'vw',
             fontViewportUnit: 'vw',
-            mediaQuery: false,
+            mediaQuery: false
         },
         autoprefixer: {},
         'postcss-image-set-function': {
             oninvalid: 'throw',
-            preserve: false,
+            preserve: false
         },
-        'postcss-nesting': {},
-    },
-}
+        'postcss-nesting': {}
+    }
+};
 module.exports = postcssConfig
