@@ -92,7 +92,6 @@ const baseConfig = {
     },
     externals: {
         jquery: 'jQuery',
-        _: 'lodash',
     },
     plugins: [
         ...HTMLPlugins,
