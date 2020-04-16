@@ -35,6 +35,20 @@ const webpackProd = {
                 },
             }),
         ],
+        usedExports: true,
+        splitChunks: {
+            chunks: 'all',
+            cacheGroups: {
+                // jquery: {
+                //     name: 'jquery',
+                //     test: /[\\/]node_modules[\\/]jquery[\\/]/,
+                // },
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                },
+            },
+        },
     },
     module: {
         rules: [
