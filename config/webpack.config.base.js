@@ -65,7 +65,7 @@ const baseConfig = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: 'static/fonts/[name]-[hash].[ext]'
+                            name: 'static/fonts/[name]-[chunkhash].[ext]'
                         }
                     }
                 ]
@@ -89,7 +89,7 @@ const baseConfig = {
                         loader: 'url-loader',
                         options: {
                             limit: 8192,
-                            name: 'static/img/[name]-[hash].[ext]',
+                            name: 'static/img/[name]-[chunkhash].[ext]',
                             fallback: 'file-loader'
                         }
                     }
