@@ -3,22 +3,38 @@ const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const cleanWebpackPlugin = require('clean-webpack-plugin')
 const uglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const compressionPlugin = require('compression-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin
 const webpackBase = require('./webpack.config.base.js')
-const {
-    project
-} = require('./config.js')
+const { project, pro } = require('./config.js')
 
 const webpackProd = {
     mode: 'production',
     stats: {
-        colors: true
+        colors: true,
     },
     devtool: 'source-map',
     output: {
         filename: 'js/[name].[chunkhash:8].bundle.js',
+    },
+    optimization: {
+        minimizer: [
+            new uglifyJSPlugin({
+                sourceMap: true,
+                exclude: pro.exclude,
+                uglifyOptions: {
+                    compress: {
+                        drop_console: true,
+                        drop_debugger: true,
+                        warnings: false,
+                    },
+                    comments: false,
+                },
+            }),
+        ],
     },
     module: {
         rules: [
@@ -34,32 +50,18 @@ const webpackProd = {
             },
             {
                 test: /(\.jsx|\.js|\.ts|\.tsx)$/,
-                use: [
-                    'babel-loader'
-                ],
-            }
-        ]
+                use: ['babel-loader'],
+            },
+        ],
     },
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'css/[name].[chunkhash:8].css',
-            chunkFilename: 'css/[id].[chunkhash:8].css'
+            chunkFilename: 'css/[id].[chunkhash:8].css',
         }),
         new webpack.HashedModuleIdsPlugin(),
         new cleanWebpackPlugin(['./dist/'], {
-            root: project
-        }),
-        new uglifyJSPlugin({
-            sourceMap: true,
-            exclude: /node_modules/,
-            uglifyOptions: {
-                compress: {
-                    drop_console: true,
-                    drop_debugger: true,
-                    warnings: false 
-                },
-                comments: false
-            }
+            root: project,
         }),
         new compressionPlugin({
             filename: '[path].gz[query]',
@@ -67,23 +69,23 @@ const webpackProd = {
             cache: true,
             algorithm: 'gzip',
             deleteOriginalAssets: false,
-            minRatio: 0.8
+            minRatio: 0.8,
         }),
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/g,
             cssProcessorPluginOptions: {
                 preset: [
-                    'default', 
-                    { 
-                        discardComments: { 
-                            removeAll: true 
-                        } 
-                    }
+                    'default',
+                    {
+                        discardComments: {
+                            removeAll: true,
+                        },
+                    },
                 ],
             },
-            canPrint: true
-        })
+            canPrint: true,
+        }),
+        new BundleAnalyzerPlugin(),
     ],
-    optimization: {}
 }
 module.exports = webpackMerge(webpackBase, webpackProd)

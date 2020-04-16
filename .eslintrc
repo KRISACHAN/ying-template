@@ -1,12 +1,14 @@
 {
     "root": true,
     "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "prettier"],
+    "extends": ["plugin:@typescript-eslint/recommended","plugin:prettier/recommended"],
     "plugins": [
         "@typescript-eslint",
         "@types/node"
     ],
     "parserOptions": {
-        "ecmaVersion": 2019,
+        "ecmaVersion": 2020,
         "sourceType": "module",
         "ecmaFeatures": {
             "modules": true,
@@ -26,6 +28,16 @@
         "eol-last": 0,
         "eqeqeq": 2,
         "camelcase": 0,
-        "space-before-function-paren": 0
+        "space-before-function-paren": 0,
+        "quotes": ["error", "single"],
+        "@typescript-eslint/explicit-function-return-type": [
+            "off",
+            {
+                "allowExpressions": true,
+                "allowTypedFunctionExpressions": true
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": "off",
+        "prettier/prettier": "error"
     }
 }

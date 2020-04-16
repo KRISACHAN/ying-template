@@ -24,6 +24,12 @@ const config = {
             resolve('node_modules')
         ]
     },
+    pro: { // 生产环境配置
+        exclude: [ // 不处理的文件夹
+            resolve('node_modules'),
+            resolve('static')
+        ]
+    },
     src: resolve('src'), // 源文件目录
     build: resolve('dist'), // 打包目录
     html: resolve('views'), // html文件目录

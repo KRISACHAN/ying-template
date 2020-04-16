@@ -53,7 +53,7 @@ const webpackDev = {
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
     ]
 }
 module.exports = webpackMerge(webpackBase, webpackDev)

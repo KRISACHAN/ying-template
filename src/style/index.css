@@ -1,0 +1,26 @@
+html,
+body,
+section,
+div,
+img {
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+.section {
+    width: 90vw;
+    max-width: 960px;
+    margin: 1vh auto;
+    .qrcode {
+        width: 100%;
+    }
+    .link {
+        li {
+            padding-bottom: 1vh;
+        }
+    }
+}
