@@ -2,7 +2,6 @@
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const webpackBase = require('./webpack.config.base.js')
-const DashboardPlugin = require('webpack-dashboard/plugin')
 const {
     dev: {
         include,
@@ -54,8 +53,7 @@ const webpackDev = {
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new DashboardPlugin()
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
 module.exports = webpackMerge(webpackBase, webpackDev)
