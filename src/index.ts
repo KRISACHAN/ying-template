@@ -16,7 +16,7 @@ console.log(
     `
         font-size: 1px;
         padding: ${height * radio}px ${width * radio}px;
-        background-image: url(https://github.com/KRISACHAN/ying-template/raw/master/static/qrcode-all1.png);
+        background-image: url(https://fish-pond-1253945200.cos.ap-guangzhou.myqcloud.com/img/base/qrcode-all1.png);
         background-size: contain;
         background-repeat: no-repeat;
         color: transparent;

@@ -2,7 +2,6 @@
 import 'src/style/test.scss'
 import $ from 'jquery'
 
-
 const $box = $('.box')
 
 $box.css({
