@@ -19,7 +19,7 @@ const webpackProd = {
     devtool: 'source-map',
     output: {
         filename: 'js/[name].[chunkhash:8].bundle.js',
-        publicPath: process.env.PUBLIC_PATH || '/'
+        publicPath: process.env.PUBLIC_PATH || '/',
     },
     optimization: {
         minimizer: [
