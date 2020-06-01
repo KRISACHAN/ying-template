@@ -91,7 +91,7 @@ const baseConfig = {
         ],
     },
     externals: {
-        jquery: 'jQuery',
+        // jquery: 'jQuery',
     },
     plugins: [
         ...HTMLPlugins,
