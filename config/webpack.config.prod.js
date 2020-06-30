@@ -11,6 +11,45 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const webpackBase = require('./webpack.config.base.js')
 const { project, pro } = require('./config.js')
 
+const plugins = [
+    new MiniCssExtractPlugin({
+        filename: 'css/[name].[chunkhash:8].css',
+        chunkFilename: 'css/[id].[chunkhash:8].css',
+    }),
+    new webpack.HashedModuleIdsPlugin(),
+    new cleanWebpackPlugin(['./dist/'], {
+        root: project,
+    }),
+    new compressionPlugin({
+        filename: '[path].gz[query]',
+        test: /(\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)$/,
+        cache: true,
+        algorithm: 'gzip',
+        deleteOriginalAssets: false,
+        minRatio: 0.8,
+    }),
+    new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessorPluginOptions: {
+            preset: [
+                'default',
+                {
+                    discardComments: {
+                        removeAll: true,
+                    },
+                },
+            ],
+        },
+        canPrint: true,
+    }),
+]
+
+const WATCH_ANALYZER = process.env.WATCH_ANALYZER === 'false' ? false : true
+
+if (WATCH_ANALYZER) {
+    plugins.push(new BundleAnalyzerPlugin())
+}
+
 const webpackProd = {
     mode: 'production',
     stats: {
@@ -69,38 +108,6 @@ const webpackProd = {
             },
         ],
     },
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[chunkhash:8].css',
-            chunkFilename: 'css/[id].[chunkhash:8].css',
-        }),
-        new webpack.HashedModuleIdsPlugin(),
-        new cleanWebpackPlugin(['./dist/'], {
-            root: project,
-        }),
-        new compressionPlugin({
-            filename: '[path].gz[query]',
-            test: /(\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)$/,
-            cache: true,
-            algorithm: 'gzip',
-            deleteOriginalAssets: false,
-            minRatio: 0.8,
-        }),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessorPluginOptions: {
-                preset: [
-                    'default',
-                    {
-                        discardComments: {
-                            removeAll: true,
-                        },
-                    },
-                ],
-            },
-            canPrint: true,
-        }),
-        new BundleAnalyzerPlugin(),
-    ],
+    plugins,
 }
 module.exports = webpackMerge(webpackBase, webpackProd)

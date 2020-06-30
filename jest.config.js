@@ -1,4 +1,6 @@
 const path = require('path')
+const tsconfig = require('./tsconfig.json');
+const moduleNameMapper = require('tsconfig-paths-jest')(tsconfig)
 const jestConfig = {
     rootDir: path.join(__dirname, ''),
     roots: ["<rootDir>/tests"],
@@ -10,6 +12,7 @@ const jestConfig = {
         'json',
         'node'
     ],
+    moduleNameMapper,
     testPathIgnorePatterns: [
         '/node_modules/'
     ],

@@ -15,6 +15,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "@babel/plugin-proposal-private-methods": "^7.8.3",
+    "@babel/plugin-transform-arrow-functions": "^7.10.1",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-typescript": "^7.6.0",
@@ -81,6 +82,8 @@
     "style-loader": "^0.23.1",
     "ts-jest": "^24.1.0",
     "ts-loader": "^6.2.0",
+    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths-jest": "0.0.1",
     "tslib": "^1.11.1",
     "typescript": "^3.7.2",
     "uglifyjs-webpack-plugin": "^2.1.1",
@@ -102,11 +105,5 @@
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
-  },
-  "browserslist": [
-    "> 5%",
-    "last 2 versions",
-    "not ie <= 8",
-    "Android >= 5.0"
-  ]
+  }
 }

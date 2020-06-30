@@ -5,7 +5,7 @@
         "outDir": "./dist/",
         "noImplicitAny": true,
         "module": "esnext",
-        "target": "es6",
+        "target": "es2020",
         "allowJs": true,
         "alwaysStrict": true,
         "watch": true,
@@ -14,11 +14,11 @@
         "declaration": true,
         "importHelpers": true,
         "paths": {
-            "@": ["src"],
-            "src": ["src"],
-            "tests": ["tests"],
-            "core": ["core"],
-            "static": ["static"]
+            "@/*": ["src/*"],
+            "src/*": ["src/*"],
+            "tests/*": ["tests/*"],
+            "core/*": ["core/*"],
+            "static/*": ["static/*"]
         },
         "typeRoots": [
             "node_modules/@types"
@@ -28,7 +28,13 @@
             "dom",
             "es5",
             "scripthost",
-            "es2015.promise"
+            "es2015.promise",
+            "es2015",
+            "es2016",
+            "es2017",
+            "es2018",
+            "es2019",
+            "es2020"
         ]
     },
     "include": [
