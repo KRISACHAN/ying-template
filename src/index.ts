@@ -1,6 +1,7 @@
 'use strict'
 import '@/style/index.css'
-import qrcodeImg from '@/img/qrcode-all1.png'
+import '@/style/index.scss'
+import qrcodeImg from 'static/img/qrcode-all1.png'
 
 const radio = 0.5
 const width = 914

@@ -11,6 +11,11 @@ body {
     width: 100%;
     min-height: 100%;
 }
+.box1 {
+    width: 200px;
+    height: 80px;
+    background: url('/img/qrcode-all1-6fdf9bd4.png') 50% 50% / cover no-repeat;
+}
 .section {
     width: 90vw;
     max-width: 960px;

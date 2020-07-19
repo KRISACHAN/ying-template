@@ -22,7 +22,7 @@ const plugins = [
     }),
     new compressionPlugin({
         filename: '[path].gz[query]',
-        test: /(\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)$/,
+        test: /(\.js|\.css|\.html|\.png|\.jpg|\.webp|\.svg)(\?.*)?$/,
         cache: true,
         algorithm: 'gzip',
         deleteOriginalAssets: false,

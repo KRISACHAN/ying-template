@@ -55,24 +55,24 @@ const baseConfig = {
     module: {
         rules: [
             {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                test: /\.(woff|woff2|eot|ttf|otf)(\?.*)?$/,
                 use: {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
-                        name: 'font/[name]-[hash:8].[ext]',
+                        name: '/font/[name]-[hash:8].[ext]',
                     },
                 },
                 include,
                 exclude,
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|svg|jpg|gif)(\?.*)?$/,
                 use: {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
-                        name: 'img/[name]-[hash:8].[ext]',
+                        name: '/img/[name]-[hash:8].[ext]',
                     },
                 },
                 include,
