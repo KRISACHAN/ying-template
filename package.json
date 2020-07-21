@@ -38,7 +38,7 @@
     "compression-webpack-plugin": "^2.0.0",
     "copy-webpack-plugin": "^4.6.0",
     "core-js": "^3.6.5",
-    "cross-env": "^5.2.0",
+    "cross-env": "^5.2.1",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
@@ -92,9 +92,9 @@
     "webpack-merge": "^4.2.1"
   },
   "scripts": {
-    "build": "webpack --progress --config ./config/webpack.config.prod.js",
-    "dev": "webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
-    "test": "jest --colors --coverage test"
+    "build": "cross-env NODE_ENV=production webpack --progress --config ./config/webpack.config.prod.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
+    "test": "cross-env NODE_ENV=testing jest --colors --coverage test"
   },
   "keywords": [
     "js",

@@ -40,6 +40,9 @@ HTMLArr.forEach(page => {
     HTMLPlugins.push(htmlPlugin)
 })
 
+// const name = process.env.NODE_ENV === 'production' ? '[name]-[hash:8].[ext]' : '[name].[ext]'
+const name = '[name].[ext]'
+
 const baseConfig = {
     context: project, // 入口、插件路径会基于context查找
     entry: {
@@ -79,7 +82,7 @@ const baseConfig = {
                     options: {
                         limit: 8192,
                         // name: 'img/[name]-[hash:8].[ext]',
-                        name: 'img/[name].[ext]',
+                        name: `img/${name}`,
                     },
                 },
                 include,
