@@ -20,9 +20,7 @@
             "core/*": ["core/*"],
             "static/*": ["static/*"]
         },
-        "typeRoots": [
-            "node_modules/@types"
-        ],
+        "typeRoots": ["node_modules/@types"],
         "lib": [
             "esnext",
             "dom",
@@ -37,9 +35,7 @@
             "es2020"
         ]
     },
-    "include": [
-        "src/*"
-    ],
+    "include": ["src/*"],
     "exclude": [
         "node_modules",
         "**/*.spec.ts",

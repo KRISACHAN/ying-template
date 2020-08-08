@@ -7,5 +7,5 @@
     "bracketSpacing": true,
     "arrowParens": "avoid",
     "requirePragma": false,
-    "endOfLine": "auto" 
+    "endOfLine": "auto"
 }
