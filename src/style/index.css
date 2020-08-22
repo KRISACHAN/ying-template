@@ -14,7 +14,7 @@ body {
 .box1 {
     width: 200px;
     height: 80px;
-    background: url('/img/qrcode-all1.png') 50% 50% / cover no-repeat;
+    background: url('~static/img/qrcode-all1.png') 50% 50% / cover no-repeat;
 }
 .section {
     width: 90vw;
