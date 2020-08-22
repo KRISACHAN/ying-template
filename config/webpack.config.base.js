@@ -89,10 +89,15 @@ const baseConfig = {
                 exclude,
             },
             {
-                test: /(\.jsx|\.js|\.ts|\.tsx)$/,
+                test: /\.(t|j)sx?$/,
                 use: [
+                    'thread-loader',
                     {
                         loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true,
+                            cacheCompression: true
+                        },
                     },
                 ],
                 include,
