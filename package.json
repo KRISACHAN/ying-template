@@ -74,6 +74,7 @@
         "postcss-preset-env": "^6.7.0",
         "postcss-px-to-viewport": "^1.1.0",
         "postcss-url": "^8.0.0",
+        "pre-commit": "^1.2.2",
         "precss": "^4.0.0",
         "prettier": "^2.0.4",
         "prettierrc": "0.0.0-5",
