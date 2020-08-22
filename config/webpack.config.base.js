@@ -40,9 +40,6 @@ HTMLArr.forEach(page => {
     HTMLPlugins.push(htmlPlugin)
 })
 
-// const name = process.env.NODE_ENV === 'production' ? '[name]-[hash:8].[ext]' : '[name].[ext]'
-const name = '[name].[ext]'
-
 const baseConfig = {
     context: project, // 入口、插件路径会基于context查找
     entry: {
@@ -56,11 +53,6 @@ const baseConfig = {
         extensions: ['.ts', '.js', '.tsx', '.jsx', '.json'], // 文件查询扩展
     },
     module: {
-        /**
-         * @date 2020/7/21
-         * @author kris
-         * @desc 现在利用资源loader给图片加上hash之后，在页面引用也得加hash，不加无法识别，需要解决这个问题，所以暂时先去掉资源hash，解决再改回去
-         */
         rules: [
             {
                 test: /\.(woff|woff2|eot|ttf|otf)(\?.*)?$/,
@@ -68,8 +60,7 @@ const baseConfig = {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
-                        // name: 'font/[name]-[hash:8].[ext]',
-                        name: 'font/[name].[ext]',
+                        name: 'font/[name]-[hash:8].[ext]',
                     },
                 },
                 include,
@@ -81,18 +72,22 @@ const baseConfig = {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
-                        // name: 'img/[name]-[hash:8].[ext]',
-                        name: `img/${name}`,
+                        name: 'img/[name]-[hash:8].[ext]',
                     },
                 },
                 include,
                 exclude,
             },
             {
-                test: /(\.jsx|\.js|\.ts|\.tsx)$/,
+                test: /\.(t|j)sx?$/,
                 use: [
+                    'thread-loader',
                     {
                         loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true,
+                            cacheCompression: true
+                        },
                     },
                 ],
                 include,

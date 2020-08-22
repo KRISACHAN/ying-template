@@ -26,6 +26,12 @@ npm run build
 
 # 单元测试
 npm run test
+
+# 代码语法测试
+npm run lint
+
+# 代码格式测试以及纠正
+npm run prettier
 ```
 
 ## 项目说明
@@ -99,30 +105,62 @@ npm run test
 ```javascript
 // ./.eslintrc
 "rules": {
-    "indent": [0, 4],
-    "arrow-parens": 0,
-    "generator-star-spacing": 0,
-    "no-debugger": 0,
-    "eol-last": 0,
-    "eqeqeq": 2,
-    "camelcase": 0,
-    "space-before-function-paren": 0,
-    "quotes": ["error", "single"],
-    "@typescript-eslint/explicit-function-return-type": [
-        "off",
-        {
-            "allowExpressions": true,
-            "allowTypedFunctionExpressions": true
-        }
-    ],
-    "@typescript-eslint/no-explicit-any": "off",
-    "prettier/prettier": "error"
+        "indent": [0, 4],
+        "arrow-parens": 0,
+        "generator-star-spacing": 0,
+        "no-debugger": 0,
+        "eol-last": 0,
+        "eqeqeq": 2,
+        "camelcase": 0,
+        "space-before-function-paren": 0,
+        "quotes": ["error", "single"],
+        "@typescript-eslint/explicit-function-return-type": [
+            "off",
+            {
+                "allowExpressions": true,
+                "allowTypedFunctionExpressions": true
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": "off",
+        "prettier/prettier": "error",
+        "no-var": "error",
+        "@typescript-eslint/consistent-type-definitions": [
+            "error",
+            "interface"
+        ]
 }
 ```
 
 `eslint`文档链接如下：
 
 <https://eslint.org/>
+
+### 提交规范
+
+代码提交规范使用 `cz-customizable`，配置文件为`.cz-config.js`，主要配置如下：
+
+```javascript
+const czConfig = {
+    ...,
+        { value: '特性', name: '特性:    一个新的特性' },
+        { value: '修复', name: '修复:    修复一个Bug' },
+        { value: '文档', name: '文档:    变更的只有文档' },
+        { value: '格式', name: '格式:    空格, 分号等格式修复' },
+        { value: '重构', name: '重构:    代码重构，注意和特性、修复区分开' },
+        { value: '性能', name: '性能:    提升性能' },
+        { value: '测试', name: '测试:    添加一个测试' },
+        { value: '工具', name: '工具:    开发工具变动(构建、脚手架工具等)' },
+        { value: '回滚', name: '回滚:    代码回退' },
+}
+```
+
+CV自 [Cz工具集使用介绍 - 规范Git提交说明](https://juejin.im/post/6844903831893966856)
+
+使用方式，利用 `git cz` 代替 `git commit`
+
+文档链接：
+
+https://github.com/leoforfree/cz-customizable
 
 ### 适配方案
 
@@ -246,10 +284,11 @@ ECMA语法的基础方案为`@babel/preset-env`，主要配置如下：
 使用者可在根目录下的`.env`文件添加环境变量，示例如下：
 
 ```bash
-HOST=0.0.0.0
-PORT=8099
-VERSION=1.0.0
-PUBLIC_PATH=/
+HOST=0.0.0.0 # 运行host
+PORT=8099 # 运行端口
+VERSION=2.0.0 # 当前项目版本
+PUBLIC_PATH=/ # 公共路径 https://webpack.js.org/guides/public-path/
+WATCH_ANALYZER=false # 生产环境下是否看火焰图
 ```
 
 ### 单元测试
@@ -294,6 +333,31 @@ const webpackDev = {
 
 <https://webpack.js.org/configuration/dev-server/#devserverproxy>
 
+### 路径重定向
+
+用户可以在 `./config/config.js` 里的 `dev.alias` 配置路径重定向，例子如下：
+
+```javascript
+const config = {
+    // ...
+    dev: {
+        alias: {
+            static: resolve('static'),
+        }
+    }
+}
+
+// .js/ts里
+import '@/style/index.css'
+
+// .css/less/scss里
+// background: url('~static/img/qrcode-all1.png') 50% 50% / cover no-repeat;
+```
+
+文档链接：
+
+https://webpack.js.org/configuration/resolve/#resolvealias
+
 ## 后记
 
 如果你喜欢探讨技术，或者对本仓库有任何的意见或建议，非常欢迎加鱼头微信好友一起探讨，当然，鱼头也非常希望能跟你一起聊生活，聊爱好，谈天说地。
@@ -301,6 +365,8 @@ const webpackDev = {
 也可以扫码关注公众号，订阅更多精彩内容。
 
 ![./static/qrcode-all1.png](./static/qrcode-all1.png)
+
+
 
 
 

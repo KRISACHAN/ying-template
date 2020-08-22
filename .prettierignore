@@ -2,5 +2,4 @@
 /static/
 /node_modules/
 /dist/
-/*.*
 /tests/
