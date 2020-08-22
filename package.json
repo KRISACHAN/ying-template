@@ -112,11 +112,11 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run test && npm run lint && && npm run prettier && lint-staged"
+            "pre-commit": "lint-staged"
         }
     },
     "lint-staged": {
-        "*.{js,ts}": [
+        "*.ts": [
             "npm run test",
             "npm run lint",
             "npm run prettier"
