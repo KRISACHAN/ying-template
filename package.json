@@ -94,12 +94,24 @@
         "webpack-bundle-analyzer": "^3.7.0",
         "webpack-merge": "^4.2.1"
     },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,ts}": [
+            "npm run test",
+            "npm run lint",
+            "npm run prettier"
+        ]
+    },
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --progress --config ./config/webpack.config.prod.js",
         "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
+        "test": "cross-env NODE_ENV=testing jest --colors --coverage test",
         "lint": "cross-env NODE_ENV=production eslint --fix src",
-        "prettier": "cross-env NODE_ENV=testing prettier src --write",
-        "lint-staged": "NODE_ENV=production eslint --fix src"
+        "prettier": "cross-env NODE_ENV=testing prettier src --write"
     },
     "keywords": [
         "js",
@@ -110,13 +122,5 @@
     "engines": {
         "node": ">= 6.0.0",
         "npm": ">= 3.0.0"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "jest && lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{js,ts}": ["npm run lint-staged", "git add -u"]
     }
 }
