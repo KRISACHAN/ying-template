@@ -11,6 +11,8 @@ console.log(qrcodeImg)
 const qrcode: Element = document.querySelector('.qrcode')
 qrcode.setAttribute('src', qrcodeImg)
 
+console.log(process.env)
+
 console.group('%c快来撩我啊', 'color: #894e54; font-size: 60px;')
 console.log(
     '%c+',

@@ -44,7 +44,7 @@ const plugins = [
     }),
 ]
 
-const WATCH_ANALYZER = process.env.WATCH_ANALYZER === 'false' ? false : true
+const WATCH_ANALYZER = process.env.WATCH_ANALYZER !== 'false'
 
 if (WATCH_ANALYZER) {
     plugins.push(new BundleAnalyzerPlugin())
