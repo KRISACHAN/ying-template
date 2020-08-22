@@ -89,6 +89,20 @@ const baseConfig = {
                 exclude,
             },
             {
+                test: /\.(t|j)sx?$/,
+                use: [
+                  {
+                    loader: 'eslint-loader',
+                    options: {
+                      cache: true,
+                    },
+                  },
+                ],
+                include,
+                exclude,
+                enforce: 'pre'
+            },
+            {
                 test: /(\.jsx|\.js|\.ts|\.tsx)$/,
                 use: [
                     {
