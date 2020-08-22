@@ -135,6 +135,35 @@ npm run prettier
 
 <https://eslint.org/>
 
+### 提交规范
+
+代码提交规范使用 `cz-customizable`，配置文件为`.cz-config.js`，主要配置如下：
+
+```javascript
+const czConfig = {
+    ...,
+    messages: {
+        type: '选择一种你的提交类型:',
+        scope: '选择一个scope (可选):',
+        // used if allowCustomScopes is true
+        customScope: 'Denote the SCOPE of this change:',
+        subject: '短说明:\n',
+        body: '长说明，使用"|"换行(可选)：\n',
+        breaking: '非兼容性说明 (可选):\n',
+        footer: '关联关闭的issue，例如：#31, #34(可选):\n',
+        confirmCommit: '确定提交说明?',
+    },
+}
+```
+
+CV自 [Cz工具集使用介绍 - 规范Git提交说明](https://juejin.im/post/6844903831893966856)
+
+使用方式，利用 `git cz` 代替 `node commit`
+
+文档链接：
+
+https://github.com/leoforfree/cz-customizable
+
 ### 适配方案
 
 适配方案为 `postcss-px-to-viewport` ，主要配置如下：
@@ -257,10 +286,11 @@ ECMA语法的基础方案为`@babel/preset-env`，主要配置如下：
 使用者可在根目录下的`.env`文件添加环境变量，示例如下：
 
 ```bash
-HOST=0.0.0.0
-PORT=8099
-VERSION=1.0.0
-PUBLIC_PATH=/
+HOST=0.0.0.0 # 运行host
+PORT=8099 # 运行端口
+VERSION=2.0.0 # 当前项目版本
+PUBLIC_PATH=/ # 公共路径 https://webpack.js.org/guides/public-path/
+WATCH_ANALYZER=false # 生产环境下是否看火焰图
 ```
 
 ### 单元测试
@@ -310,10 +340,25 @@ const webpackDev = {
 用户可以在 `./config/config.js` 里的 `dev.alias` 配置路径重定向，例子如下：
 
 ```javascript
+const config = {
+    // ...
+    dev: {
+        alias: {
+            static: resolve('static'),
+        }
+    }
+}
 
+// .js/ts里
+import '@/style/index.css'
+
+// .css/less/scss里
+// background: url('~static/img/qrcode-all1.png') 50% 50% / cover no-repeat;
 ```
 
+文档链接：
 
+https://webpack.js.org/configuration/resolve/#resolvealias
 
 ## 后记
 
@@ -322,6 +367,8 @@ const webpackDev = {
 也可以扫码关注公众号，订阅更多精彩内容。
 
 ![./static/qrcode-all1.png](./static/qrcode-all1.png)
+
+
 
 
 
