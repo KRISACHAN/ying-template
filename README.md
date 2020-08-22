@@ -26,6 +26,12 @@ npm run build
 
 # 单元测试
 npm run test
+
+# 代码语法测试
+npm run lint
+
+# 代码格式测试以及纠正
+npm run prettier
 ```
 
 ## 项目说明
@@ -99,24 +105,29 @@ npm run test
 ```javascript
 // ./.eslintrc
 "rules": {
-    "indent": [0, 4],
-    "arrow-parens": 0,
-    "generator-star-spacing": 0,
-    "no-debugger": 0,
-    "eol-last": 0,
-    "eqeqeq": 2,
-    "camelcase": 0,
-    "space-before-function-paren": 0,
-    "quotes": ["error", "single"],
-    "@typescript-eslint/explicit-function-return-type": [
-        "off",
-        {
-            "allowExpressions": true,
-            "allowTypedFunctionExpressions": true
-        }
-    ],
-    "@typescript-eslint/no-explicit-any": "off",
-    "prettier/prettier": "error"
+        "indent": [0, 4],
+        "arrow-parens": 0,
+        "generator-star-spacing": 0,
+        "no-debugger": 0,
+        "eol-last": 0,
+        "eqeqeq": 2,
+        "camelcase": 0,
+        "space-before-function-paren": 0,
+        "quotes": ["error", "single"],
+        "@typescript-eslint/explicit-function-return-type": [
+            "off",
+            {
+                "allowExpressions": true,
+                "allowTypedFunctionExpressions": true
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": "off",
+        "prettier/prettier": "error",
+        "no-var": "error",
+        "@typescript-eslint/consistent-type-definitions": [
+            "error",
+            "interface"
+        ]
 }
 ```
 
@@ -293,6 +304,16 @@ const webpackDev = {
 文档链接：
 
 <https://webpack.js.org/configuration/dev-server/#devserverproxy>
+
+### 路径重定向
+
+用户可以在 `./config/config.js` 里的 `dev.alias` 配置路径重定向，例子如下：
+
+```javascript
+
+```
+
+
 
 ## 后记
 
