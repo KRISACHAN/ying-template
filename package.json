@@ -97,8 +97,8 @@
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --progress --config ./config/webpack.config.prod.js",
         "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
-        "test": "cross-env NODE_ENV=testing jest --colors --coverage test",
-        "lint": "cross-env NODE_ENV=production eslint --fix src",
+        "test1": "cross-env NODE_ENV=testing jest --colors --coverage test",
+        "test": "cross-env NODE_ENV=production eslint --fix src",
         "prettier": "cross-env NODE_ENV=testing prettier src --write"
     },
     "keywords": [
@@ -118,6 +118,7 @@
     },
     "lint-staged": {
         "*.{js,ts}": [
+            "npm run test",
             "npm run lint",
             "npm run prettier"
         ]
