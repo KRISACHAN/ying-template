@@ -117,6 +117,6 @@
         }
     },
     "lint-staged": {
-        "*.ts": ["npm run lint", "npm run prettier"]
+        "*.{js,ts}": ["npm run test", "npm run lint", "npm run prettier"]
     }
 }
