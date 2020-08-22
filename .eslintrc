@@ -6,7 +6,7 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended"
     ],
-    "plugins": ["@typescript-eslint", "@types/node", "prettier"],
+    "plugins": ["@typescript-eslint/eslint-plugin", "prettier"],
     "parserOptions": {
         "ecmaVersion": 2020,
         "sourceType": "module",
@@ -38,6 +38,11 @@
             }
         ],
         "@typescript-eslint/no-explicit-any": "off",
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "no-var": "error",
+        "@typescript-eslint/consistent-type-definitions": [
+            "error",
+            "interface"
+        ]
     }
 }
