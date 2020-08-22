@@ -99,7 +99,8 @@
         "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
         "jest": "cross-env NODE_ENV=testing jest --colors --coverage test",
         "lint": "cross-env NODE_ENV=production eslint --fix src",
-        "prettier": "cross-env NODE_ENV=testing prettier src --write"
+        "prettier": "cross-env NODE_ENV=testing prettier src --write",
+        "test": "npm run jest && npm run lint && npm run prettier"
     },
     "keywords": [
         "js",
@@ -111,16 +112,9 @@
         "node": ">= 6.0.0",
         "npm": ">= 3.0.0"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run lint && lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{js,ts}": [
-            "npm run test",
-            "npm run lint",
-            "npm run prettier"
-        ]
-    }
+    "pre-commit": [
+        "test",
+        "lint",
+        "prettier"
+    ]
 }
