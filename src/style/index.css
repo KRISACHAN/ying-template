@@ -17,8 +17,7 @@ body {
     background: url('~static/img/qrcode-all1.png') 50% 50% / cover no-repeat;
 }
 .section {
-    width: 90vw;
-    max-width: 960px;
+    width: calc(750px * 0.9);
     margin: 1vh auto;
     .qrcode {
         width: 100%;

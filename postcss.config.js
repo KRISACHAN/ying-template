@@ -7,6 +7,9 @@ const postcssConfig = {
             features: {},
             cssnano: {},
         },
+        // 'postcss-px2rem': {
+        //     remUnit: 75,
+        // },
         'postcss-px-to-viewport': {
             unitToConvert: 'px',
             viewportWidth: 750,
@@ -23,5 +26,8 @@ const postcssConfig = {
         },
         'postcss-nesting': {},
     },
+}
+if (process.env.IS_MOBILE === 'false') {
+    delete postcssConfig.plugins['postcss-px-to-viewport']
 }
 module.exports = postcssConfig

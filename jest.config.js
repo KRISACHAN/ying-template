@@ -5,14 +5,17 @@ const jestConfig = {
     rootDir: path.join(__dirname, ''),
     roots: ['<rootDir>/tests'],
     moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
-    moduleNameMapper,
+    moduleNameMapper: {
+        ...moduleNameMapper,
+        '\\.(scss|less|css)$': 'identity-obj-proxy',
+    },
     testPathIgnorePatterns: ['/node_modules/'],
     coveragePathIgnorePatterns: [
         '/node_modules/',
         '/dist/',
         '/config/',
         '/view/',
-        '/src/'
+        '/src/',
     ],
     coverageReporters: [
         'json',
