@@ -4,15 +4,20 @@ const moduleNameMapper = require('tsconfig-paths-jest')(tsconfig)
 const jestConfig = {
     rootDir: path.join(__dirname, ''),
     roots: ['<rootDir>/tests'],
+    globals: {},
     moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
-    moduleNameMapper,
+    moduleNameMapper: {
+        ...moduleNameMapper
+    },
+    coverageDirectory: 'coverage',
+    coverageReporters: ['lcov'],
     testPathIgnorePatterns: ['/node_modules/'],
     coveragePathIgnorePatterns: [
         '/node_modules/',
         '/dist/',
         '/config/',
         '/view/',
-        '/src/'
+        '/src/',
     ],
     coverageReporters: [
         'json',

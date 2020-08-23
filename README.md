@@ -142,15 +142,31 @@ npm run prettier
 ```javascript
 const czConfig = {
     ...,
-        { value: '特性', name: '特性:    一个新的特性' },
-        { value: '修复', name: '修复:    修复一个Bug' },
-        { value: '文档', name: '文档:    变更的只有文档' },
-        { value: '格式', name: '格式:    空格, 分号等格式修复' },
-        { value: '重构', name: '重构:    代码重构，注意和特性、修复区分开' },
-        { value: '性能', name: '性能:    提升性能' },
-        { value: '测试', name: '测试:    添加一个测试' },
-        { value: '工具', name: '工具:    开发工具变动(构建、脚手架工具等)' },
-        { value: '回滚', name: '回滚:    代码回退' },
+        { value: 'feat', name: '特性: 新增一个功能' },
+        { value: 'fix', name: '修复: 修复一个Bug' },
+        { value: 'docs', name: '文档: 文档变更' },
+        { value: 'style', name: '格式: 代码格式' },
+        { value: 'refactor', name: '重构: 代码重构' },
+        { value: 'perf', name: '性能: 改善性能' },
+        { value: 'test', name: '测试: 测试代码' },
+        {
+            value: 'build',
+            name:
+                '工具: 变更项目构建或外部依赖（例如scopes: webpack、gulp、npm等）',
+        },
+        {
+            value: 'ci',
+            name:
+                '集成: 更改持续集成软件的配置文件和package中的scripts命令，例如scopes: Travis, Circle等',
+        },
+        {
+            value: 'chore',
+            name: '构建: 变更构建流程或辅助工具',
+        },
+        {
+            value: 'revert',
+            name: '回退: 代码回退',
+        },
 }
 ```
 
@@ -289,6 +305,7 @@ PORT=8099 # 运行端口
 VERSION=2.0.0 # 当前项目版本
 PUBLIC_PATH=/ # 公共路径 https://webpack.js.org/guides/public-path/
 WATCH_ANALYZER=false # 生产环境下是否看火焰图
+IS_MOBILE=false # 判断是否是移动端，如果是，则打开postcss-px-to-viewport
 ```
 
 ### 单元测试
@@ -364,7 +381,7 @@ https://webpack.js.org/configuration/resolve/#resolvealias
 鱼头的微信号是：krisChans95
 也可以扫码关注公众号，订阅更多精彩内容。
 
-![./static/qrcode-all1.png](./static/qrcode-all1.png)
+![./static/img/qrcode-all1.png](./static/img/qrcode-all1.png)
 
 
 

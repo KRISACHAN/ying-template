@@ -1,0 +1,12 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+.box {
+    width: 750px;
+    height: 700px;
+    margin: 0 auto;
+    border: 1px solid currentColor;
+    box-sizing: border-box;
+}

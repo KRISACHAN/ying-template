@@ -30,6 +30,7 @@
         "@typescript-eslint/typescript-estree": "^3.9.1",
         "acorn": "^7.1.0",
         "autoprefixer": "^9.4.2",
+        "babel-jest": "^26.3.0",
         "babel-loader": "^8.0.5",
         "babel-polyfill": "^6.26.0",
         "chalk": "^2.4.2",
@@ -76,6 +77,7 @@
         "postcss-plugin": "^1.0.0",
         "postcss-preset-env": "^6.7.0",
         "postcss-px-to-viewport": "^1.1.0",
+        "postcss-px2rem": "^0.3.0",
         "postcss-url": "^8.0.0",
         "pre-commit": "^1.2.2",
         "precss": "^4.0.0",
@@ -101,7 +103,7 @@
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --progress --config ./config/webpack.config.prod.js",
         "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
-        "jest": "cross-env NODE_ENV=testing jest --colors --coverage test",
+        "jest": "cross-env NODE_ENV=testing jest --colors --coverage tests",
         "lint": "cross-env NODE_ENV=production eslint --fix src",
         "prettier": "cross-env NODE_ENV=testing prettier src --write"
     },
@@ -116,7 +118,6 @@
         "npm": ">= 3.0.0"
     },
     "pre-commit": [
-        "jest",
         "lint",
         "prettier"
     ],
