@@ -11,6 +11,13 @@
 ### 安装配置
 
 1. 下载并安装node: https://nodejs.org/zh-cn/download/
+2. 如果 `node-sass` 安装不上，可以尝试使用以下方法安装
+   * 设置淘宝源：`npm config set registry https://registry.npm.taobao.org`
+   * Linux 跟 Mac使用：`SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass --save-dev`
+   * Windows使用：`set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ && npm install node-sass  --save-dev`
+   * 用梯子
+3. 如果 `chromedriver` 安装不上，可以尝试使用以下方案安装
+   * 使用淘宝源：`npm install chromedriver --save-dev --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver`
 
 ### 运行命令
 
