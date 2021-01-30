@@ -11,6 +11,6 @@ window.onload = () => {
     const box = document.querySelector('.box')
     const { width: boxWidth, height: boxHeight } = getComputedStyle(box, null)
     box.innerHTML = `本盒子的高度: ${boxHeight}, 宽度：${boxWidth}，页面宽度为：${window.innerWidth}`
+    console.log(count);
 }
 export const add = (a: number, b: number): number => a + b
-

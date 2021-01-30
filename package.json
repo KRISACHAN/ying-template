@@ -119,6 +119,7 @@
         "npm": ">= 3.0.0"
     },
     "pre-commit": [
+        "jest",
         "lint",
         "prettier"
     ],
