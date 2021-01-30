@@ -7,6 +7,7 @@ const jestConfig = {
     globals: {},
     moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
     moduleNameMapper: {
+        '\\.(scss|less|css)$': 'identity-obj-proxy',
         ...moduleNameMapper
     },
     coverageDirectory: 'coverage',
