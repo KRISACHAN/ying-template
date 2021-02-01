@@ -1,4 +1,4 @@
-import { add } from 'src/demo'
+import { add } from 'src/index'
 
 describe('Add', () => {
     test('1 + 1', () => {
