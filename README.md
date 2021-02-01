@@ -317,9 +317,48 @@ IS_MOBILE=false # 判断是否是移动端，如果是，则打开postcss-px-to-
 
 ### 单元测试
 
+### 基本说明
+
 本库使用的单元测试框架为`jest@24.9.0`，`jest@24.9.0`文档链接如下：
 
 <https://jestjs.io/>
+
+### 注意事项
+
+**jest** 测试 **dom** 时，相关代码需要包裹在 **window.onload** 里，否则会报错。例如
+
+```
+'use strict'
+import '@/style/index.css'
+import qrcodeImg from 'static/img/qrcode-all1.png'
+
+window.onload = () => {
+    const radio = 0.25
+    const width = 914
+    const height = 439
+
+    const qrcode: Element = document.querySelector('.qrcode')
+    qrcode.setAttribute('src', qrcodeImg)
+
+    console.group('%c快来撩我啊', 'color: #894e54; font-size: 60px;')
+    console.log(
+        '%c+',
+        `
+            font-size: 1px;
+            padding: ${height * radio}px ${width * radio}px;
+            background-image: url(https://fish-pond-1253945200.cos.ap-guangzhou.myqcloud.com/img/base/qrcode-all1.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            color: transparent;
+        `,
+    )
+    console.groupEnd()
+}
+
+export const add = (a: number, b: number): number => a + b
+```
+
+
 
 ### 其他配置
 
