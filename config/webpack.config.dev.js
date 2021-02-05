@@ -35,17 +35,6 @@ const webpackDev = {
                 use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
             {
-                test: /\.scss$/,
-                include,
-                exclude,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader',
-                ],
-            },
-            {
                 test: /\.less$/,
                 include,
                 exclude,
