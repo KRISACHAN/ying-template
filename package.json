@@ -100,7 +100,9 @@
         "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
         "jest": "cross-env NODE_ENV=production jest --colors --coverage tests",
         "lint": "cross-env NODE_ENV=production eslint --fix src",
-        "prettier": "cross-env NODE_ENV=production prettier src --write"
+        "prettier": "cross-env NODE_ENV=production prettier src --write",
+        "prettier:all": "cross-env NODE_ENV=production prettier config src tests  --write",
+        "cz": "git cz"
     },
     "keywords": [
         "js",
@@ -115,7 +117,8 @@
     "pre-commit": [
         "jest",
         "lint",
-        "prettier"
+        "prettier",
+        "cz"
     ],
     "config": {
         "commitizen": {
