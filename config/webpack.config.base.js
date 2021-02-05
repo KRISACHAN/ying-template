@@ -82,7 +82,7 @@ const baseConfig = {
                         loader: 'babel-loader',
                         options: {
                             cacheDirectory: true,
-                            cacheCompression: true
+                            cacheCompression: true,
                         },
                     },
                 ],
