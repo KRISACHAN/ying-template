@@ -47,8 +47,6 @@ const webpackDev = {
             },
         ],
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-    ],
+    plugins: [new webpack.HotModuleReplacementPlugin()],
 }
 module.exports = webpackMerge(webpackBase, webpackDev)

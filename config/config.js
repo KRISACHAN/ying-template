@@ -7,7 +7,7 @@ dotenv.config() // 添加环境变量
 const corePath = {
     src: resolve('src'),
     views: resolve('views'),
-    dist: resolve('dist')
+    dist: resolve('dist'),
 }
 
 const assetsPath = {
@@ -51,6 +51,6 @@ const config = {
     build: corePath.dist, // 打包目录
     views: corePath.views, // html文件目录
     node_modules: corePath.nodeModules, // node_modules目录
-    static: corePath.static // 静态资源文件夹
+    static: corePath.static, // 静态资源文件夹
 }
 module.exports = config

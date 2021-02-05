@@ -22,5 +22,6 @@ body {
             padding-bottom: 1vh;
         }
     }
-    &:first-child {}
+    &:first-child {
+    }
 }
