@@ -79,10 +79,6 @@ const webpackProd = {
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
-                // jquery: {
-                //     name: 'jquery',
-                //     test: /[\\/]node_modules[\\/]jquery[\\/]/,
-                // },
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
@@ -98,7 +94,6 @@ const webpackProd = {
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
-                    'sass-loader',
                     'less-loader',
                 ],
             },

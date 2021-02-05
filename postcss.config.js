@@ -7,9 +7,6 @@ const postcssConfig = {
             features: {},
             cssnano: {},
         },
-        // 'postcss-px2rem': {
-        //     remUnit: 75,
-        // },
         'postcss-px-to-viewport': {
             unitToConvert: 'px',
             viewportWidth: 750,
