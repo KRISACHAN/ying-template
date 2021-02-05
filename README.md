@@ -2,7 +2,7 @@
 
 ## 项目信息
 
-这是一个基于 `webpack@4.28.1` + `typescript@3.7.2` + `babel@7.2.2` + `jest@24.9.0` + `eslint@5.12.0`  + `node-sass@4.12.0` + `less@3.9.0` 的多页面脚手架。
+这是一个基于 `webpack@4.28.1` + `typescript@3.7.2` + `babel@7.2.2` + `jest@24.9.0` + `eslint@5.12.0` + `less@3.9.0` 的多页面脚手架。
 
 本库支持增量更新，支持 `gzip` 打包，支持第三方资源别名引入，支持静态文件引入，支持使用环境变量。
 
@@ -11,13 +11,6 @@
 ### 安装配置
 
 1. 下载并安装node: https://nodejs.org/zh-cn/download/
-2. 如果 `node-sass` 安装不上，可以尝试使用以下方法安装
-   * 设置淘宝源：`npm config set registry https://registry.npm.taobao.org`
-   * Linux 跟 Mac使用：`SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass --save-dev`
-   * Windows使用：`set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ && npm install node-sass  --save-dev`
-   * 用梯子
-3. 如果 `chromedriver` 安装不上，可以尝试使用以下方案安装
-   * 使用淘宝源：`npm install chromedriver --save-dev --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver`
 
 ### 运行命令
 
