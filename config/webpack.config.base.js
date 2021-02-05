@@ -3,8 +3,8 @@ const fs = require('fs')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const {
-    html,
-    ignorePages,
+    views,
+    src,
     project,
     dev: { alias, include, exclude },
     build,
@@ -17,34 +17,30 @@ const getPagesEnter = path => {
         .map(e => e.replace('.html', ''))
     return filesArr
 }
-const HTMLArr = getPagesEnter(html)
-const HTMLPlugins = [] // 保存HTMLWebpackPlugin实例
-const Entries = {} // 保存入口列表
+const viewEntries = getPagesEnter(views)
+const htmlPlugins = [] // 保存HTMLWebpackPlugin实例
+const entries = {} // 保存入口列表
 
 // 生成HTMLWebpackPlugin实例和入口列表
-HTMLArr.forEach(page => {
+viewEntries.forEach(page => {
     const htmlConfig = {
         filename: `${page}.html`,
-        template: path.join(html, `./${page}.html`), // 模板文件
+        template: path.join(views, `./${page}.html`), // 模板文件
     }
-    const hasIgnorePages = ignorePages.findIndex(val => val === page)
-    if (hasIgnorePages === -1) {
-        // 有入口js文件的html，添加本页的入口js，与公共js，并将入口js写入Entries中
-        htmlConfig.chunks = [page, 'vendors']
-        Entries[page] = `./src/${page}.ts`
-    } else {
-        // 没有入口js文件，chunk为空
+    const entryFile = path.join(src, `./${page}.ts`)
+    if (!fs.existsSync(entryFile)) {
         htmlConfig.chunks = []
+    } else {
+        htmlConfig.chunks = [page, 'vendors']
+        entries[page] = `./src/${page}.ts`
     }
     const htmlPlugin = new HTMLWebpackPlugin(htmlConfig)
-    HTMLPlugins.push(htmlPlugin)
+    htmlPlugins.push(htmlPlugin)
 })
 
 const baseConfig = {
     context: project, // 入口、插件路径会基于context查找
-    entry: {
-        ...Entries,
-    },
+    entry: entries,
     output: {
         path: build, // 打包路径
     },
@@ -97,7 +93,7 @@ const baseConfig = {
     },
     externals: {},
     plugins: [
-        ...HTMLPlugins,
+        ...htmlPlugins,
         new CopyWebpackPlugin([
             {
                 from: 'static',

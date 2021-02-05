@@ -3,6 +3,19 @@ const dotenv = require('dotenv')
 const project = process.cwd()
 const resolve = dir => path.join(__dirname, '..', dir) // 获取文件夹
 dotenv.config() // 添加环境变量
+
+const corePath = {
+    src: resolve('src'),
+    views: resolve('views'),
+    dist: resolve('dist')
+}
+
+const assetsPath = {
+    nodeModules: resolve('node_modules'),
+    static: resolve('static'),
+    tests: resolve('tests'),
+}
+
 const config = {
     project, // 项目目录
     config: path.resolve(__dirname, '../'), // 配置文件目录
@@ -10,37 +23,34 @@ const config = {
         // 开发环境配置
         alias: {
             // 路径重定向
-            '@': resolve('src'),
-            src: resolve('src'),
-            tests: resolve('tests'),
-            core: resolve('core'),
-            static: resolve('static'),
+            '@': corePath.src,
+            src: corePath.src,
+            tests: assetsPath.tests,
+            static: assetsPath.static,
         },
         include: [
             // 处理的文件夹
-            resolve('src'),
-            resolve('tests'),
-            resolve('core'),
-            resolve('static'),
+            corePath.src,
+            assetsPath.tests,
+            assetsPath.static,
         ],
         exclude: [
             // 不处理的文件夹
-            resolve('node_modules'),
+            assetsPath.nodeModules,
         ],
     },
     pro: {
         // 生产环境配置
         exclude: [
             // 不处理的文件夹
-            resolve('node_modules'),
-            resolve('static'),
+            assetsPath.nodeModules,
+            assetsPath.static,
         ],
     },
-    src: resolve('src'), // 源文件目录
-    build: resolve('dist'), // 打包目录
-    html: resolve('views'), // html文件目录
-    node_modules: resolve('node_modules'), // node_modules目录
-    static: resolve('static'), // 静态资源文件夹
-    ignorePages: [''], // 标识没有入口js文件的html
+    src: corePath.src, // 源文件目录
+    build: corePath.dist, // 打包目录
+    views: corePath.views, // html文件目录
+    node_modules: corePath.nodeModules, // node_modules目录
+    static: corePath.static // 静态资源文件夹
 }
 module.exports = config
