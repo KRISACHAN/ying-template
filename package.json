@@ -102,7 +102,7 @@
         "lint": "cross-env NODE_ENV=production eslint --fix src",
         "prettier": "cross-env NODE_ENV=production prettier src --write",
         "prettier:all": "cross-env NODE_ENV=production prettier config src tests  --write",
-        "cz": "git cz"
+        "cz": "npm run jest && npm run lint && npm run prettier:all && git add . && git cz"
     },
     "keywords": [
         "js",
@@ -117,8 +117,7 @@
     "pre-commit": [
         "jest",
         "lint",
-        "prettier",
-        "cz"
+        "prettier"
     ],
     "config": {
         "commitizen": {
