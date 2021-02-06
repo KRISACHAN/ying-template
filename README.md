@@ -182,6 +182,45 @@ CV 自 [Cz 工具集使用介绍 - 规范 Git 提交说明](https://juejin.im/po
 
 https://github.com/leoforfree/cz-customizable
 
+### 容器化
+
+**ying-template** 添加了 **Docker** 部署 **nginx** 服务器的脚本。执行命令如下：
+
+```bash
+bash docker-entrypoint.sh
+```
+
+`docker-entrypoint.sh` 内容如下
+
+```bash
+#!/bin/sh
+set -e
+
+green='\e[21;32m%s\e[0m\n'
+yellow='\e[21;33m%s\e[0m\n'
+blue='\e[21;34m%s\e[0m\n'
+cyan='\e[21;36m%s\e[0m\n'
+
+rootDir=$(cd $(dirname $0); pwd)
+EXPOSE_PORT=8200
+SERVER_PORT=80
+DOCKER_TAG=app/ying-template
+
+printf "$yellow" "[ 1 / 2 ] >> 开始构建你的 $DOCKER_TAG 辣～"
+printf "$blue" "===================================="
+docker build -t ${DOCKER_TAG} .
+
+printf "$green" "[ 2 / 2 ] >> 赶紧吐出，吐出端口号：$EXPOSE_PORT"
+printf "$green" "现在可以打开你的 http://localhost:$EXPOSE_PORT 康效果了哦～"
+printf "$blue" "===================================="
+printf "$cyan" "$rootDir/dist"
+docker run -it -p ${EXPOSE_PORT}:${SERVER_PORT} -v ${rootDir}/dist:/usr/share/nginx/html:ro ${DOCKER_TAG}
+```
+
+关于 **Docker** 的教程，推荐大家看这个网站：https://yeasy.gitbooks.io/docker_practice/content/ ，具体语法就不作说明了
+
+这里只是粗略地写了个可用的方案，具体的可以根据各自的项目自行拓展。
+
 ### 适配方案
 
 适配方案为 `postcss-px-to-viewport` ，主要配置如下：
