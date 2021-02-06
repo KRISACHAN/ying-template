@@ -109,10 +109,9 @@
         "ts"
     ],
     "author": "chenjinwen77@foxmail.com",
-    "license": "ISC",
+    "license": "MIT",
     "engines": {
-        "node": ">= 6.0.0",
-        "npm": ">= 3.0.0"
+        "node": ">=6.11.5"
     },
     "pre-commit": [
         "jest",
