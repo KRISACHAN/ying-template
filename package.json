@@ -1,8 +1,8 @@
 {
     "name": "ying-template",
-    "version": "2.0.0",
-    "description": "a template with ts by kris",
-    "main": "index.js",
+    "version": "2.1.0",
+    "description": "a multiple pages app with typescript",
+    "main": "src/index.ts",
     "dependencies": {},
     "devDependencies": {
         "@babel/core": "^7.2.2",
@@ -97,16 +97,26 @@
     },
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --progress --config ./config/webpack.config.prod.js",
-        "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
-        "jest": "cross-env NODE_ENV=production jest --colors --coverage tests",
-        "lint": "cross-env NODE_ENV=production eslint --fix src",
-        "prettier": "cross-env NODE_ENV=production prettier src --write",
-        "prettier:all": "cross-env NODE_ENV=production prettier config src tests  --write",
-        "cz": "npm run jest && npm run lint && npm run prettier:all && git add . && git cz"
+        "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --config ./config/webpack.config.dev.js",
+        "jest": "cross-env NODE_ENV=development jest --cache --colors --coverage tests",
+        "lint": "cross-env NODE_ENV=development eslint --fix src",
+        "prettier": "cross-env NODE_ENV=development prettier src --write",
+        "prettier:all": "cross-env NODE_ENV=development prettier config src tests  --write",
+        "cz": "npm run jest && npm run lint && npm run prettier:all && git add . && git cz && git push",
+        "precommit": "lint-staged"
     },
+    "lint-staged": {},
     "keywords": [
-        "js",
-        "ts"
+        "javascript",
+        "typescript",
+        "webpack",
+        "jest",
+        "eslint",
+        "prettier",
+        "lint-staged",
+        "babel",
+        "less",
+        "multiple pages"
     ],
     "author": "chenjinwen77@foxmail.com",
     "license": "ISC",
@@ -114,11 +124,6 @@
         "node": ">= 6.0.0",
         "npm": ">= 3.0.0"
     },
-    "pre-commit": [
-        "jest",
-        "lint",
-        "prettier"
-    ],
     "config": {
         "commitizen": {
             "path": "node_modules/cz-customizable"

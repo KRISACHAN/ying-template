@@ -1,8 +1,11 @@
 const path = require('path')
 const dotenv = require('dotenv')
-const project = process.cwd()
+const root = process.cwd()
 const resolve = dir => path.join(__dirname, '..', dir) // 获取文件夹
-dotenv.config() // 添加环境变量
+
+dotenv.config({
+    path: resolve(`.env.${process.env.NODE_ENV || 'production'}`),
+}) // 添加环境变量
 
 const corePath = {
     src: resolve('src'),
@@ -17,7 +20,7 @@ const assetsPath = {
 }
 
 const config = {
-    project, // 项目目录
+    root, // 项目目录
     config: path.resolve(__dirname, '../'), // 配置文件目录
     dev: {
         // 开发环境配置
@@ -39,7 +42,7 @@ const config = {
             assetsPath.nodeModules,
         ],
     },
-    pro: {
+    prod: {
         // 生产环境配置
         exclude: [
             // 不处理的文件夹

@@ -6,10 +6,9 @@ const uglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const compressionPlugin = require('compression-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-    .BundleAnalyzerPlugin
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const webpackBase = require('./webpack.config.base.js')
-const { project, pro } = require('./config.js')
+const { root, prod } = require('./config.js')
 
 const plugins = [
     new MiniCssExtractPlugin({
@@ -18,7 +17,7 @@ const plugins = [
     }),
     new webpack.HashedModuleIdsPlugin(),
     new cleanWebpackPlugin(['./dist/'], {
-        root: project,
+        root,
     }),
     new compressionPlugin({
         filename: '[path].gz[query]',
@@ -64,7 +63,7 @@ const webpackProd = {
         minimizer: [
             new uglifyJSPlugin({
                 sourceMap: true,
-                exclude: pro.exclude,
+                exclude: prod.exclude,
                 uglifyOptions: {
                     compress: {
                         drop_console: true,
