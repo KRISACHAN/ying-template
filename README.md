@@ -2,20 +2,6 @@
 
 ## 项目信息
 
-![GitHub](https://img.shields.io/github/license/krisachan/ying-template)
-
-![NPM](https://img.shields.io/npm/l/webpack#4.28.1)
-
-![NPM](https://img.shields.io/npm/l/typescript#3.7.2)
-
-![NPM](https://img.shields.io/npm/l/@babel/core#7.2.2)
-
-![NPM](https://img.shields.io/npm/l/jest#24.9.0)
-
-![NPM](https://img.shields.io/npm/l/eslint#5.12.0)
-
-![NPM](https://img.shields.io/npm/l/less#3.9.0)
-
 这是一个基于 `webpack@4.28.1` + `typescript@3.7.2` + `@babel/core@7.2.2` + `jest@24.9.0` + `eslint@5.12.0` + `less@3.9.0` 的多页面脚手架。
 
 本库支持增量更新，支持 `gzip` 打包，支持第三方资源别名引入，支持静态文件引入，支持使用环境变量。
