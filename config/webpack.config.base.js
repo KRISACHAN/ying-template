@@ -5,17 +5,17 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const {
     views,
     src,
-    project,
+    root,
     dev: { alias, include, exclude },
     build,
 } = require('./config.js')
 // 获取html文件名，生成多页面入口
 const getPagesEnter = path => {
-    const dirArr = fs.readdirSync(path)
-    const filesArr = dirArr
+    const dirs = fs.readdirSync(path)
+    const filteredList = dirs
         .filter(e => e.indexOf('html') >= 0)
         .map(e => e.replace('.html', ''))
-    return filesArr
+    return filteredList
 }
 const viewEntries = getPagesEnter(views)
 const htmlPlugins = [] // 保存HTMLWebpackPlugin实例
@@ -39,7 +39,7 @@ viewEntries.forEach(page => {
 })
 
 const baseConfig = {
-    context: project, // 入口、插件路径会基于context查找
+    context: root, // 入口、插件路径会基于context查找
     entry: entries,
     output: {
         path: build, // 打包路径

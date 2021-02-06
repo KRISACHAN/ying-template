@@ -25,6 +25,8 @@ const webpackDev = {
         port: process.env.PORT || '8082',
         useLocalIp: true,
         proxy: {},
+        https: false,
+        open: true,
     },
     module: {
         rules: [
