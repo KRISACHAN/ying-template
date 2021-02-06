@@ -2,7 +2,21 @@
 
 ## 项目信息
 
-这是一个基于 `webpack@4.28.1` + `typescript@3.7.2` + `babel@7.2.2` + `jest@24.9.0` + `eslint@5.12.0` + `less@3.9.0` 的多页面脚手架。
+![GitHub](https://img.shields.io/github/license/krisachan/ying-template)
+
+![NPM](https://img.shields.io/npm/l/webpack#4.28.1)
+
+![NPM](https://img.shields.io/npm/l/typescript#3.7.2)
+
+![NPM](https://img.shields.io/npm/l/@babel/core#7.2.2)
+
+![NPM](https://img.shields.io/npm/l/jest#24.9.0)
+
+![NPM](https://img.shields.io/npm/l/eslint#5.12.0)
+
+![NPM](https://img.shields.io/npm/l/less#3.9.0)
+
+这是一个基于 `webpack@4.28.1` + `typescript@3.7.2` + `@babel/core@7.2.2` + `jest@24.9.0` + `eslint@5.12.0` + `less@3.9.0` 的多页面脚手架。
 
 本库支持增量更新，支持 `gzip` 打包，支持第三方资源别名引入，支持静态文件引入，支持使用环境变量。
 
@@ -10,7 +24,7 @@
 
 ### 安装配置
 
-1. 下载并安装node: https://nodejs.org/zh-cn/download/
+1. 下载并安装 node: https://nodejs.org/zh-cn/download/
 
 ### 运行命令
 
@@ -59,21 +73,21 @@ npm run cz
 │  postcss.config.js // postcss配置文件
 │  README.md // 项目说明文档
 │  tsconfig.json // ts语言配置
-│  
+│
 ├─config // 核心配置
 │      config.js // 根配置
 │      webpack.config.base.js // 基础配置
 │      webpack.config.dev.js // 开发环境配置
 │      webpack.config.prod.js // 生产环境配置
-│      
+│
 ├─coverage // 单元测试结果文件
 |
 ├─src // 用户代码
-│          
+│
 ├─static // 静态资源
-│      
+│
 ├─tests // 测试文件夹
-│      
+│
 └─views // 页面目标
 ```
 
@@ -94,11 +108,11 @@ npm run cz
     "bracketSpacing": true,
     "arrowParens": "avoid",
     "requirePragma": false,
-    "endOfLine": "auto" 
+    "endOfLine": "auto"
 }
 ```
 
- `prettier`文档链接如下：
+`prettier`文档链接如下：
 
 <https://prettier.io/>
 
@@ -174,7 +188,7 @@ const czConfig = {
 }
 ```
 
-CV自 [Cz工具集使用介绍 - 规范Git提交说明](https://juejin.im/post/6844903831893966856)
+CV 自 [Cz 工具集使用介绍 - 规范 Git 提交说明](https://juejin.im/post/6844903831893966856)
 
 使用方式，利用 `git cz` 代替 `git commit`
 
@@ -199,13 +213,13 @@ https://github.com/leoforfree/cz-customizable
 },
 ```
 
- `postcss-px-to-viewport` 文档链接：
+`postcss-px-to-viewport` 文档链接：
 
 <https://evrone.com/postcss-px-viewport>
 
-### CSS语法方案
+### CSS 语法方案
 
-CSS语法方案为 `postcss-preset-env`，主要配置如下：
+CSS 语法方案为 `postcss-preset-env`，主要配置如下：
 
 ```javascript
 // ./postcss.config.js
@@ -221,7 +235,7 @@ CSS语法方案为 `postcss-preset-env`，主要配置如下：
 
 <https://preset-env.cssdb.org/>
 
-### 支持的CSS扩展语言
+### 支持的 CSS 扩展语言
 
 #### less
 
@@ -229,11 +243,11 @@ CSS语法方案为 `postcss-preset-env`，主要配置如下：
 
 <http://lesscss.org/>
 
-### ECMA语法方案
+### ECMA 语法方案
 
 #### 基础方案
 
-ECMA语法的基础方案为`@babel/preset-env`，主要配置如下：
+ECMA 语法的基础方案为`@babel/preset-env`，主要配置如下：
 
 ```javascript
 // ./.babelrc
@@ -259,7 +273,7 @@ ECMA语法的基础方案为`@babel/preset-env`，主要配置如下：
 
 #### 拓展语法
 
-可按需增删需要的ECMA提案插件，主要配置如下：
+可按需增删需要的 ECMA 提案插件，主要配置如下：
 
 ```javascript
 // ./.babelrc
@@ -349,20 +363,18 @@ window.onload = () => {
 export const add = (a: number, b: number): number => a + b
 ```
 
-
-
 ### 其他配置
 
-#### 第三方插件URL引入
+#### 第三方插件 URL 引入
 
-当用户使用url的形式（例如CDN）引入第三方JS文件时，可通过 `./config/webpack.config.base.js` 的 `externals` 进行配置，例子如下：
+当用户使用 url 的形式（例如 CDN）引入第三方 JS 文件时，可通过 `./config/webpack.config.base.js` 的 `externals` 进行配置，例子如下：
 
 ```javascript
 const baseConfig = {
-  //...
+    //...
     externals: {
-		// ...
-       jquery: 'jQuery',
+        // ...
+        jquery: 'jQuery',
     },
 }
 ```
@@ -373,11 +385,11 @@ const baseConfig = {
 
 ```javascript
 const webpackDev = {
-  //...
+    //...
     devServer: {
-		// ...
+        // ...
         proxy: {
-            '/api': 'http://localhost:3000'
+            '/api': 'http://localhost:3000',
         },
     },
 }
@@ -397,14 +409,14 @@ const config = {
     dev: {
         alias: {
             static: resolve('static'),
-        }
-    }
+        },
+    },
 }
 
 // .js/ts里
 import '@/style/index.css'
 
-// .css/less/scss里
+// .css/less里
 // background: url('~static/img/qrcode-all1.png') 50% 50% / cover no-repeat;
 ```
 
@@ -419,8 +431,3 @@ https://webpack.js.org/configuration/resolve/#resolvealias
 也可以扫码关注公众号，订阅更多精彩内容。
 
 ![./static/img/qrcode-all1.png](./static/img/qrcode-all1.png)
-
-
-
-
-

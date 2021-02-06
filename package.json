@@ -1,6 +1,6 @@
 {
     "name": "ying-template",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "description": "a multiple pages app with typescript",
     "main": "src/index.ts",
     "dependencies": {},
@@ -101,7 +101,8 @@
         "jest": "cross-env NODE_ENV=development jest --cache --colors --coverage tests",
         "lint": "cross-env NODE_ENV=development eslint --fix src",
         "prettier": "cross-env NODE_ENV=development prettier config src tests --write",
-        "cz": "npm run jest && npm run lint && npm run prettier && git add . && git cz && git push",
+        "prettier:all": "cross-env NODE_ENV=development prettier . --write",
+        "cz": "git add . && npm run jest && npm run lint && npm run prettier && git cz && git push",
         "precommit": "lint-staged"
     },
     "lint-staged": {},
@@ -118,10 +119,9 @@
         "multiple pages"
     ],
     "author": "chenjinwen77@foxmail.com",
-    "license": "ISC",
+    "license": "MIT",
     "engines": {
-        "node": ">= 6.0.0",
-        "npm": ">= 3.0.0"
+        "node": ">=6.11.5"
     },
     "config": {
         "commitizen": {

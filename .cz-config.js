@@ -36,20 +36,9 @@ const czConfig = {
         { name: 'readme' },
         { name: 'line' },
     ],
-    // it needs to match the value for field type. Eg.: 'fix'
-    // scopeOverrides: {
-    //     fix: [
-    //         { name: 'merge' },
-    //         { name: 'style' },
-    //         { name: 'e2eTest' },
-    //         { name: 'unitTest' },
-    //     ],
-    // },
-    // override the messages, defaults are as follows
     messages: {
         type: '选择一种你的提交类型:',
         scope: '选择一个scope (可选):',
-        // used if allowCustomScopes is true
         customScope: '选择更改范围:',
         subject: '短说明:\n',
         body: '长说明，使用"|"换行(可选)：\n',
@@ -59,7 +48,6 @@ const czConfig = {
     },
     allowCustomScopes: true,
     allowBreakingChanges: ['特性', '修复'],
-    // 限制主题长度
     subjectLimit: 100,
 }
 

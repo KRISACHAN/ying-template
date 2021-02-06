@@ -40,9 +40,6 @@
         "@typescript-eslint/no-explicit-any": "off",
         "prettier/prettier": "error",
         "no-var": "error",
-        "@typescript-eslint/consistent-type-definitions": [
-            "error",
-            "interface"
-        ]
+        "@typescript-eslint/consistent-type-definitions": ["error", "interface"]
     }
 }
