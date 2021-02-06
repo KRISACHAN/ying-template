@@ -100,9 +100,8 @@
         "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --config ./config/webpack.config.dev.js",
         "jest": "cross-env NODE_ENV=development jest --cache --colors --coverage tests",
         "lint": "cross-env NODE_ENV=development eslint --fix src",
-        "prettier": "cross-env NODE_ENV=development prettier src --write",
-        "prettier:all": "cross-env NODE_ENV=development prettier config src tests  --write",
-        "cz": "npm run jest && npm run lint && npm run prettier:all && git add . && git cz && git push",
+        "prettier": "cross-env NODE_ENV=development prettier config src tests --write",
+        "cz": "npm run jest && npm run lint && npm run prettier && git add . && git cz && git push",
         "precommit": "lint-staged"
     },
     "lint-staged": {},
