@@ -32,6 +32,10 @@ npm run lint
 
 # 代码格式测试以及纠正
 npm run prettier
+
+# 一键上传源码
+npm run cz
+
 ```
 
 ## 项目说明
