@@ -187,6 +187,7 @@ https://github.com/leoforfree/cz-customizable
 **ying-template** 添加了 **Docker** 部署 **nginx** 服务器的脚本。执行命令如下：
 
 ```bash
+<<<<<<< HEAD
 bash docker-entrypoint.sh
 ```
 
@@ -215,11 +216,64 @@ printf "$green" "现在可以打开你的 http://localhost:$EXPOSE_PORT 康效�
 printf "$blue" "===================================="
 printf "$cyan" "$rootDir/dist"
 docker run -it -p ${EXPOSE_PORT}:${SERVER_PORT} -v ${rootDir}/dist:/usr/share/nginx/html:ro ${DOCKER_TAG}
+=======
+npm run build
+docker-compose up
+```
+
+**Dockerfile** 内容如下
+
+```bash
+FROM nginx:latest
+RUN nginx -v
+
+ENV SERVER_PORT=$SERVER_PORT
+
+ENV EXPOSE_PORT=$EXPOSE_PORT
+
+ENV CONTAINER_NAME=$CONTAINER_NAME
+
+ENV IMAGE_NAME=$IMAGE_NAME
+
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
+COPY dist /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
+
+EXPOSE ${SERVER_PORT}
+```
+
+**docker-compose.yml** 内容如下：
+
+```yml
+version: '3.7'
+services:
+  ying-front:
+    env_file:
+      - .env
+    container_name: ${CONTAINER_NAME}
+    image: ${IMAGE_NAME}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./dist:/usr/share/nginx/html:ro
+    ports:
+      - target: ${EXPOSE_PORT}
+        published: ${SERVER_PORT}
+        protocol: tcp
+        mode: host
+>>>>>>> dev
 ```
 
 关于 **Docker** 的教程，推荐大家看这个网站：https://yeasy.gitbooks.io/docker_practice/content/ ，具体语法就不作说明了
 
+<<<<<<< HEAD
 这里只是粗略地写了个可用的方案，具体的可以根据各自的项目自行拓展。
+=======
+因为不想把镜像弄得太大，所以项目打包是在 `docker build` 之前完成的，有需要的可以根据各位 **DEVOPS** 的实际情况来修改
+>>>>>>> dev
 
 ### 适配方案
 
