@@ -11,7 +11,7 @@ const webpackDev = {
     stats: {
         colors: true,
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'eval-cheap-module-source-map',
     output: {
         filename: 'static/js/[name].[hash:8].bundle.js',
     },

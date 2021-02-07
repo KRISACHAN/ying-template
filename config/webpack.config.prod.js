@@ -54,7 +54,10 @@ const webpackProd = {
     stats: {
         colors: true,
     },
-    devtool: 'source-map',
+    // 可与 hidden-source-map 之间二选一
+    // 打开 https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps
+    // https://webpack.js.org/configuration/devtool/
+    devtool: 'nosources-source-map', 
     output: {
         filename: 'js/[name].[chunkhash:8].bundle.js',
         publicPath: process.env.PUBLIC_PATH || '/',
