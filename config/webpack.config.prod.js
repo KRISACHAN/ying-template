@@ -1,11 +1,17 @@
 // 生产环境配置
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
+// https://www.npmjs.com/package/clean-webpack-plugin  清除文件夹
 const cleanWebpackPlugin = require('clean-webpack-plugin')
+// https://www.npmjs.com/package/uglifyjs-webpack-plugin 压缩文件夹
 const uglifyJSPlugin = require('uglifyjs-webpack-plugin')
+// https://www.npmjs.com/package/mini-css-extract-plugin 将 CSS 提取到单独的文件中
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// https://www.npmjs.com/package/optimize-css-assets-webpack-plugin CSS 优化
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+// https://www.npmjs.com/package/compression-webpack-plugin 提供带 Content-Encoding 编码的压缩版的资源
 const compressionPlugin = require('compression-webpack-plugin')
+// https://www.npmjs.com/package/webpack-bundle-analyzer 可视化的输出文件详情
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const webpackBase = require('./webpack.config.base.js')
 const { root, prod } = require('./config.js')
@@ -98,10 +104,6 @@ const webpackProd = {
                     'postcss-loader',
                     'less-loader',
                 ],
-            },
-            {
-                test: /(\.jsx|\.js|\.ts|\.tsx)$/,
-                use: ['babel-loader'],
             },
         ],
     },

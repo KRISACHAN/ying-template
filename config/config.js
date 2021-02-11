@@ -1,59 +1,61 @@
 const path = require('path')
 const dotenv = require('dotenv')
 const root = process.cwd()
-const resolve = dir => path.join(__dirname, '..', dir) // 获取文件夹
-
-dotenv.config({
-    path: resolve(`.env.${process.env.NODE_ENV || 'production'}`),
-}) // 添加环境变量
-
+// 获取当前项目下的文件夹路径
+const resolve = dir => path.join(__dirname, '..', dir)
+// 环境变量初始化
+const initEnv = () => {
+    dotenv.config({
+        path: resolve(`.env.${process.env.NODE_ENV || 'production'}`),
+    })
+}
+initEnv()
+// 核心的文件路径
 const corePath = {
     src: resolve('src'),
     views: resolve('views'),
     dist: resolve('dist'),
 }
-
+// 资源文件路径
 const assetsPath = {
     nodeModules: resolve('node_modules'),
     static: resolve('static'),
     tests: resolve('tests'),
 }
-
+// 输出的配置
 const config = {
-    root, // 项目目录
-    config: path.resolve(__dirname, '../'), // 配置文件目录
+    // 项目目录
+    root,
+    // 配置文件目录
+    config: path.resolve(__dirname, '../'),
+    // 开发环境配置
     dev: {
-        // 开发环境配置
+        // 路径重定向
         alias: {
-            // 路径重定向
             '@': corePath.src,
             src: corePath.src,
             tests: assetsPath.tests,
             static: assetsPath.static,
         },
-        include: [
-            // 处理的文件夹
-            corePath.src,
-            assetsPath.tests,
-            assetsPath.static,
-        ],
-        exclude: [
-            // 不处理的文件夹
-            assetsPath.nodeModules,
-        ],
+        // 处理的文件夹
+        include: [corePath.src, assetsPath.tests, assetsPath.static],
+        // 不处理的文件夹
+        exclude: [assetsPath.nodeModules],
     },
+    // 生产环境配置
     prod: {
-        // 生产环境配置
-        exclude: [
-            // 不处理的文件夹
-            assetsPath.nodeModules,
-            assetsPath.static,
-        ],
+        // 不处理的文件夹
+        exclude: [assetsPath.nodeModules, assetsPath.static],
     },
-    src: corePath.src, // 源文件目录
-    build: corePath.dist, // 打包目录
-    views: corePath.views, // html文件目录
-    node_modules: corePath.nodeModules, // node_modules目录
-    static: corePath.static, // 静态资源文件夹
+    // 源文件目录
+    src: corePath.src,
+    // 打包目录
+    dist: corePath.dist,
+    // html文件目录
+    views: corePath.views,
+    // node_modules目录
+    node_modules: corePath.nodeModules,
+    // 静态资源文件夹
+    static: corePath.static,
 }
 module.exports = config
