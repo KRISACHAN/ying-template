@@ -219,21 +219,21 @@ EXPOSE ${SERVER_PORT}
 ```yml
 version: '3.7'
 services:
-  ying-front:
-    env_file:
-      - .env
-    container_name: ${CONTAINER_NAME}
-    image: ${IMAGE_NAME}
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ./dist:/usr/share/nginx/html:ro
-    ports:
-      - target: ${EXPOSE_PORT}
-        published: ${SERVER_PORT}
-        protocol: tcp
-        mode: host
+    ying-front:
+        env_file:
+            - .env
+        container_name: ${CONTAINER_NAME}
+        image: ${IMAGE_NAME}
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./dist:/usr/share/nginx/html:ro
+        ports:
+            - target: ${EXPOSE_PORT}
+              published: ${SERVER_PORT}
+              protocol: tcp
+              mode: host
 ```
 
 关于 **Docker** 的教程，推荐大家看这个网站：https://yeasy.gitbooks.io/docker_practice/content/ ，具体语法就不作说明了
