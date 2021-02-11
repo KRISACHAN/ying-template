@@ -11,7 +11,7 @@ const webpackDev = {
     stats: {
         colors: true,
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'eval-cheap-module-source-map',
     output: {
         filename: 'static/js/[name].[hash:8].bundle.js',
     },
@@ -31,13 +31,7 @@ const webpackDev = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                include,
-                exclude,
-                use: ['style-loader', 'css-loader', 'postcss-loader'],
-            },
-            {
-                test: /\.less$/,
+                test: /\.(le|c)ss$/,
                 include,
                 exclude,
                 use: [

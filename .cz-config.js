@@ -18,8 +18,12 @@ const czConfig = {
                 '集成: 更改持续集成软件的配置文件和package中的scripts命令，例如scopes: Travis, Circle等',
         },
         {
-            value: 'chore',
-            name: '构建: 变更构建流程或辅助工具',
+            value: 'style',
+            name: '代码格式（不影响功能，例如空格、分号等格式修正）',
+        },
+        {
+            value: 'revert',
+            name: '回退: 代码回退',
         },
         {
             value: 'revert',
@@ -27,12 +31,13 @@ const czConfig = {
         },
     ],
     scopes: [
-        { name: 'test' },
         { name: 'config' },
-        { name: 'src' },
-        { name: 'style' },
-        { name: 'script' },
-        { name: 'html' },
+        { name: 'src/assets' },
+        { name: 'src/styles' },
+        { name: 'src/scripts' },
+        { name: 'static' },
+        { name: 'tests' },
+        { name: 'views' },
         { name: 'readme' },
         { name: 'line' },
     ],
