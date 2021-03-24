@@ -20,7 +20,6 @@ const jestConfig = {
         '/dist/',
         '/config/',
         '/view/',
-        '/src/',
     ],
     coverageReporters: [
         'json',
