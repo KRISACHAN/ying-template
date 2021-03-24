@@ -21,7 +21,6 @@ const plugins = [
         filename: 'css/[name].[chunkhash:8].css',
         chunkFilename: 'css/[id].[chunkhash:8].css',
     }),
-    new webpack.HashedModuleIdsPlugin(),
     new cleanWebpackPlugin(['./dist/'], {
         root,
     }),
@@ -69,6 +68,7 @@ const webpackProd = {
         publicPath: process.env.PUBLIC_PATH || '/',
     },
     optimization: {
+        moduleIds: 'deterministic',
         minimizer: [
             new uglifyJSPlugin({
                 sourceMap: true,
@@ -77,7 +77,6 @@ const webpackProd = {
                     compress: {
                         drop_console: true,
                         drop_debugger: true,
-                        warnings: false,
                     },
                     comments: false,
                 },
@@ -87,7 +86,7 @@ const webpackProd = {
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
-                vendors: {
+                defaultVendors: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
                 },
