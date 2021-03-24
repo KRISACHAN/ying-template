@@ -35,7 +35,11 @@
             "es2020"
         ]
     },
-    "include": ["src/*"],
+    "include": [
+        "src/*.*",
+        "src/**/*.*",
+        "src/**/**/*.*"
+    ],
     "exclude": [
         "node_modules",
         "**/*.spec.ts",
