@@ -9,6 +9,8 @@ window.onload = () => {
 
     const qrcode: Element = document.querySelector('.qrcode')
     qrcode.setAttribute('src', qrcodeImg)
+    qrcode.setAttribute('y-width', width + 'px')
+    qrcode.setAttribute('y-height', height + 'px')
 
     console.group('%c快来撩我啊', 'color: #894e54; font-size: 60px;')
     console.log(

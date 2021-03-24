@@ -16,7 +16,7 @@ const webpackDev = {
         filename: 'static/js/[name].[hash:8].bundle.js',
     },
     devServer: {
-        contentBase: './dist/',
+        contentBase: './dist',
         historyApiFallback: true,
         overlay: true,
         inline: true,
