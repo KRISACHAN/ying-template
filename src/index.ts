@@ -1,4 +1,3 @@
-'use strict'
 import '@/style/index.css'
 import qrcodeImg from 'static/img/qrcode-all1.png'
 

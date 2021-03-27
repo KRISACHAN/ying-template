@@ -1,0 +1,72 @@
+$blue: #056ef0;
+$column: 200px;
+$faded: true !default;
+
+@mixin times($multiply: 4) {
+    width: calc($multiply * $column);
+}
+
+%menu-link-options {
+    background: $blue;
+    height: @width;
+}
+
+.menu {
+    @include times;
+}
+
+.menu-link {
+    @include times(1);
+
+    @extend %menu-link-options;
+
+    &:any-link {
+        @if $faded {
+            background-color: color-mod($blue alpha(50%));
+        } @else {
+            background-color: $blue;
+
+            @at-root {
+                :root {
+                    background-color: color-mod($blue alpha(2%));
+                }
+            }
+        }
+    }
+}
+
+$bg-color: #ccc;
+html,
+body {
+    width: 750px;
+    height: 100vh;
+    overflow-x: auto;
+    background: $bg-color;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+html,
+body,
+section,
+header,
+main,
+footer,
+div {
+    margin: 0;
+    padding: 0;
+}
+::placeholder {
+    color: gray;
+}
+.grid {
+    display: grid;
+    grid: repeat(2, 240px) / auto-flow 320px;
+
+    & > div {
+        background-color: #8ca0ff;
+        width: 200px;
+        height: 200px;
+        transition: 1s;
+    }
+}

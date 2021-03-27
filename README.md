@@ -2,7 +2,7 @@
 
 ## 项目信息
 
-这是一个基于 `webpack@^5.27.2` + `typescript@^4.2.3` + `@babel/core@^7.2.2` + `jest@^26.6.3` + `eslint@^7.22.0` + `less@3.9.0` 的多页面脚手架。
+这是一个基于 `webpack@^5.27.2` + `typescript@^4.2.3` + `@babel/core@^7.2.2` + `jest@^26.6.3` + `eslint@^7.22.0` 的多页面脚手架。
 
 本库支持增量更新，支持 `gzip` 打包，支持第三方资源别名引入，支持静态文件引入，支持使用环境变量。
 
@@ -279,14 +279,6 @@ CSS 语法方案为 `postcss-preset-env`，主要配置如下：
 
 <https://preset-env.cssdb.org/>
 
-### 支持的 CSS 扩展语言
-
-#### less
-
-`less`文档如下：
-
-<http://lesscss.org/>
-
 ### ECMA 语法方案
 
 #### 基础方案
@@ -460,7 +452,7 @@ const config = {
 // .js/ts里
 import '@/style/index.css'
 
-// .css/less里
+// .css里
 // background: url('~static/img/qrcode-all1.png') 50% 50% / cover no-repeat;
 ```
 

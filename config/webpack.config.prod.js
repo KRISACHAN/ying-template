@@ -96,12 +96,11 @@ const webpackProd = {
     module: {
         rules: [
             {
-                test: /\.(le|c)ss$/,
+                test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
-                    'less-loader',
                 ],
             },
         ],
