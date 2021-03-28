@@ -100,7 +100,7 @@
         "jest": "cross-env NODE_ENV=development jest --cache --colors --coverage tests",
         "lint": "cross-env NODE_ENV=development eslint --fix src",
         "prettier": "cross-env NODE_ENV=development prettier config src tests *.js .*.js --write",
-        "cz": "git add . && yarn jest && yarn lint && yarn prettier && git cz && git push"
+        "cz": "yarn jest && yarn lint && yarn prettier && git add . && git cz && git push"
     },
     "keywords": [
         "javascript",

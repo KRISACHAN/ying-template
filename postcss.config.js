@@ -9,8 +9,8 @@ const postcssConfig = {
         precss({
             stage: 3,
             features: {
-                'color-mod-function': { unresolved: 'warn' }
-            }
+                'color-mod-function': { unresolved: 'warn' },
+            },
         }),
         pxToViewport({
             unitToConvert: 'px',
