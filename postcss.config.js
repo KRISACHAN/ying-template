@@ -1,5 +1,4 @@
 const precss = require('precss')
-const presetEnv = require('postcss-preset-env')
 const pxToViewport = require('postcss-px-to-viewport')
 
 const postcssConfig = {
@@ -7,12 +6,11 @@ const postcssConfig = {
         /**
          * @url https://cssdb.org/
          */
-        precss(),
-        /**
-         * @todo 需要确定是否 preset-env 的 options 可以直接在 precss 里调用
-         */
-        presetEnv({
-            stage: 3, // 拥抱阶段。稳定且变化不大，此功能可能会成为标准。
+        precss({
+            stage: 3,
+            features: {
+                'color-mod-function': { unresolved: 'warn' }
+            }
         }),
         pxToViewport({
             unitToConvert: 'px',

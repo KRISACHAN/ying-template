@@ -109,29 +109,26 @@ npm run cz
 ```javascript
 // ./.eslintrc
 "rules": {
-        "indent": [0, 4],
-        "arrow-parens": 0,
-        "generator-star-spacing": 0,
-        "no-debugger": 0,
-        "eol-last": 0,
-        "eqeqeq": 2,
-        "camelcase": 0,
-        "space-before-function-paren": 0,
-        "quotes": ["error", "single"],
-        "@typescript-eslint/explicit-function-return-type": [
-            "off",
-            {
-                "allowExpressions": true,
-                "allowTypedFunctionExpressions": true
-            }
-        ],
-        "@typescript-eslint/no-explicit-any": "off",
-        "prettier/prettier": "error",
-        "no-var": "error",
-        "@typescript-eslint/consistent-type-definitions": [
-            "error",
-            "interface"
-        ]
+    "indent": [0, 4],
+    "arrow-parens": 0,
+    "generator-star-spacing": 0,
+    "no-debugger": 0,
+    "eol-last": 0,
+    "eqeqeq": 2,
+    "camelcase": 0,
+    "space-before-function-paren": 0,
+    "quotes": ["error", "single"],
+    "@typescript-eslint/explicit-function-return-type": [
+        "off",
+        {
+            "allowExpressions": true,
+            "allowTypedFunctionExpressions": true
+        }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "prettier/prettier": "error",
+    "no-var": "error",
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"]
 }
 ```
 
@@ -146,6 +143,7 @@ npm run cz
 ```javascript
 const czConfig = {
     ...,
+    types: [
         { value: 'feat', name: '特性: 新增一个功能' },
         { value: 'fix', name: '修复: 修复一个Bug' },
         { value: 'docs', name: '文档: 文档变更' },
@@ -164,13 +162,18 @@ const czConfig = {
                 '集成: 更改持续集成软件的配置文件和package中的scripts命令，例如scopes: Travis, Circle等',
         },
         {
-            value: 'chore',
-            name: '构建: 变更构建流程或辅助工具',
+            value: 'style',
+            name: '代码格式（不影响功能，例如空格、分号等格式修正）',
         },
         {
             value: 'revert',
             name: '回退: 代码回退',
         },
+        {
+            value: 'revert',
+            name: '回退: 代码回退',
+        },
+    ],
 }
 ```
 
@@ -187,7 +190,7 @@ https://github.com/leoforfree/cz-customizable
 **ying-template** 添加了 **Docker** 部署 **nginx** 服务器的脚本。执行命令如下：
 
 ```bash
-npm run build
+yarn build
 docker-compose up
 ```
 
@@ -246,15 +249,15 @@ services:
 
 ```javascript
 // ./postcss.config.js
-'postcss-px-to-viewport': {
+pxToViewport({
     unitToConvert: 'px',
     viewportWidth: 750,
     viewportHeight: 1334,
     unitPrecision: 3,
     viewportUnit: 'vw',
     fontViewportUnit: 'vw',
-    mediaQuery: false
-},
+    mediaQuery: false,
+}),
 ```
 
 `postcss-px-to-viewport` 文档链接：
@@ -263,21 +266,21 @@ services:
 
 ### CSS 语法方案
 
-CSS 语法方案为 `postcss-preset-env`，主要配置如下：
+CSS 语法方案为 `precss`，主要配置如下：
 
 ```javascript
 // ./postcss.config.js
-'postcss-preset-env': {
-    browsers: 'last 2 versions',
+precss({
     stage: 3,
-    features: {},
-    cssnano: {}
-},
+    features: {
+      	'color-mod-function': { unresolved: 'warn' }
+    }
+}),
 ```
 
-`postcss-preset-env`文档链接：
+`precss`文档链接：
 
-<https://preset-env.cssdb.org/>
+<https://github.com/jonathantneal/precss>
 
 ### ECMA 语法方案
 
@@ -288,18 +291,19 @@ ECMA 语法的基础方案为`@babel/preset-env`，主要配置如下：
 ```javascript
 // ./.babelrc
 "presets": [
-    [
-        "@babel/preset-env",
-        {
-            "useBuiltIns": "usage",
-            "corejs": 3,
-            "targets": {
-                "esmodules": true,
-                "chrome": "49"
-            }
-        }
-    ],
-    "@babel/preset-typescript"
+  [
+    "@babel/preset-env",
+    {
+      "useBuiltIns": "usage",
+      "corejs": 3,
+      "targets": {
+        "esmodules": true,
+        "chrome": "60",
+        "ie": "10"
+      }
+    }
+  ],
+  "@babel/preset-typescript"
 ],
 ```
 
@@ -339,7 +343,7 @@ ECMA 语法的基础方案为`@babel/preset-env`，主要配置如下：
 
 ### typescript
 
-支持`typescript@3.7.2`语法，`typescript`文档链接如下：
+支持`typescript@4.2.3`语法，`typescript`文档链接如下：
 
 <https://www.typescriptlang.org/>
 
@@ -360,7 +364,7 @@ IS_MOBILE=false # 判断是否是移动端，如果是，则打开postcss-px-to-
 
 ### 基本说明
 
-本库使用的单元测试框架为`jest@24.9.0`，`jest@24.9.0`文档链接如下：
+本库使用的单元测试框架为`jest@^26.6.3`，`jest@^26.6.3`文档链接如下：
 
 <https://jestjs.io/>
 

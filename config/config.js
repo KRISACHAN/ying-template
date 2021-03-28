@@ -6,7 +6,7 @@ const resolve = dir => path.join(__dirname, '..', dir)
 // 环境变量初始化
 const initEnv = () => {
     dotenv.config({
-        path: resolve(`.env.${process.env.NODE_ENV || 'production'}`),
+        path: resolve('.env'),
     })
 }
 initEnv()

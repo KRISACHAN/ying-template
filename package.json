@@ -1,6 +1,6 @@
 {
     "name": "ying-template",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "description": "a multiple pages app with typescript",
     "main": "src/index.ts",
     "dependencies": {},
@@ -66,7 +66,6 @@
         "postcss-load-config": "^2.0.0",
         "postcss-loader": "^5.2.0",
         "postcss-plugin": "^1.0.0",
-        "postcss-preset-env": "^6.7.0",
         "postcss-px-to-viewport": "^1.1.1",
         "postcss-url": "^8.0.0",
         "pre-commit": "^1.2.2",
@@ -96,8 +95,8 @@
         "postcss": "^8.0.0"
     },
     "scripts": {
-        "build": "webpack --progress --config ./config/webpack.config.prod.js",
-        "dev": "webpack serve --progress --config ./config/webpack.config.dev.js",
+        "build": "cross-env NODE_ENV=production webpack --progress --config ./config/webpack.config.prod.js",
+        "dev": "cross-env NODE_ENV=development webpack serve --progress --config ./config/webpack.config.dev.js",
         "jest": "cross-env NODE_ENV=development jest --cache --colors --coverage tests",
         "lint": "cross-env NODE_ENV=development eslint --fix src",
         "prettier": "cross-env NODE_ENV=development prettier config src tests *.js .*.js --write",
