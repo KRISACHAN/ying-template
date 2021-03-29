@@ -37,7 +37,7 @@
                 "allowTypedFunctionExpressions": true
             }
         ],
-        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-explicit-any": 2,
         "prettier/prettier": "error",
         "no-var": "error",
         "@typescript-eslint/consistent-type-definitions": ["error", "interface"]
