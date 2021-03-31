@@ -38,14 +38,16 @@
     "include": [
         "src/*.*",
         "src/**/*.*",
-        "src/**/**/*.*"
+        "src/**/**/*.*",
+        "tests/**/**/*.*",
+        "tests/**/**/*.*",
+        "tests/**/**/*.*"
     ],
     "exclude": [
         "node_modules",
         "**/*.spec.ts",
         "**/dist/**",
         "**/static/**",
-        "**/config/**",
-        "**/*.test.ts"
+        "**/config/**"
     ]
 }
