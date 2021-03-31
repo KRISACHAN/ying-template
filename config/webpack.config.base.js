@@ -4,6 +4,8 @@ const fs = require('fs')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 // https://www.npmjs.com/package/copy-webpack-plugin 复制文件夹到构建目录
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const mobileRoutes = require('./../src/mobile/routes').default
+const pcRoutes = require('./../src/mobile/routes').default
 const {
     views,
     src,
@@ -11,44 +13,54 @@ const {
     dev: { alias, include, exclude },
     dist,
 } = require('./config.js')
-// 生成 html 处理插件以及入口
-const genHTMLPluginsAndEntries = viewsPath => {
-    // 获取html文件名，生成多页面入口
-    const getViewEntries = viewsPath => {
-        const viewsDir = fs.readdirSync(viewsPath)
-        const genViewsNameWithoutSuffix = viewsDir
-            .filter(e => e.indexOf('html') >= 0)
-            .map(e => e.replace('.html', ''))
-        return genViewsNameWithoutSuffix
-    }
-    const viewEntries = getViewEntries(viewsPath)
-    // 保存HTMLWebpackPlugin实例
+
+const genPages = (routes, type) => {
     const plugins = []
-    // 保存入口列表
     const entries = {}
-    // 生成HTMLWebpackPlugin实例和入口列表
-    viewEntries.forEach(view => {
-        const htmlConfig = {
-            filename: `${view}.html`,
-            template: path.join(views, `./${view}.html`), // 模板文件
+
+    Object.entries(routes).forEach(entry => {
+        const [key, title] = entry
+        if (key === 'national-day') {
+            return
         }
-        const entryFile = path.join(src, `./${view}.ts`)
+        const htmlConfig = {
+            filename: `./${type}/${key}.html`,
+            template: path.join(views, './tpl.ejs'),
+            templateParameters: {
+                title
+            },
+            inject: true,
+        }
+        const entryFile = path.join(src, `./${type}/${key}/index.ts`)
         if (!fs.existsSync(entryFile)) {
             htmlConfig.chunks = []
         } else {
-            htmlConfig.chunks = [view, 'vendors']
-            entries[view] = `./src/${view}.ts`
+            htmlConfig.chunks = [`${type}/${key}`, 'vendors']
+            entries[`${type}/${key}`] = `./src/${type}/${key}/index.ts`
         }
         const htmlPlugin = new HTMLWebpackPlugin(htmlConfig)
         plugins.push(htmlPlugin)
     })
+
     return {
-        entries,
         plugins,
+        entries
     }
 }
 
-const { entries, plugins: htmlPlugins } = genHTMLPluginsAndEntries(views)
+const { entries: mobileEntries, plugins: mobileHtmlPlugins } = genPages(mobileRoutes, 'mobile')
+const { entries: pcEntries, plugins: pcHtmlPlugins } = genPages(pcRoutes, 'pc')
+
+// entries, plugins: htmlPlugins
+const entries = {
+    ...mobileEntries,
+    ...pcEntries
+}
+
+const htmlPlugins = [
+    ...mobileHtmlPlugins,
+    ...pcHtmlPlugins
+]
 
 const baseConfig = {
     // 入口路径
@@ -57,6 +69,7 @@ const baseConfig = {
     output: {
         // 打包路径
         path: dist,
+        filename: './[name].js',
     },
     resolve: {
         // 文件名简写
