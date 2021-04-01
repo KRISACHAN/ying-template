@@ -4,8 +4,9 @@ const fs = require('fs')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 // https://www.npmjs.com/package/copy-webpack-plugin 复制文件夹到构建目录
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const mobileRoutes = require('./../src/mobile/routes').default
-const pcRoutes = require('./../src/mobile/routes').default
+
+const routesMap = require('./create-routes-map')
+
 const {
     views,
     src,
@@ -14,12 +15,15 @@ const {
     dist,
 } = require('./config.js')
 
-const genPages = (routes, type) => {
+const genRouteConfigs = (routes, type) => {
     const plugins = []
     const entries = {}
 
-    Object.entries(routes).forEach(entry => {
-        const [key, title] = entry
+    routes.forEach(entry => {
+        const {
+            key,
+            value
+        } = entry
         if (key === 'national-day') {
             return
         }
@@ -27,7 +31,7 @@ const genPages = (routes, type) => {
             filename: `./${type}/${key}.html`,
             template: path.join(views, './tpl.ejs'),
             templateParameters: {
-                title
+                title: value
             },
             inject: true,
         }
@@ -48,10 +52,9 @@ const genPages = (routes, type) => {
     }
 }
 
-const { entries: mobileEntries, plugins: mobileHtmlPlugins } = genPages(mobileRoutes, 'mobile')
-const { entries: pcEntries, plugins: pcHtmlPlugins } = genPages(pcRoutes, 'pc')
+const { entries: mobileEntries, plugins: mobileHtmlPlugins } = genRouteConfigs(routesMap.mobileRoutesMap, 'mobile')
+const { entries: pcEntries, plugins: pcHtmlPlugins } = genRouteConfigs(routesMap.pcRoutesMap, 'pc')
 
-// entries, plugins: htmlPlugins
 const entries = {
     ...mobileEntries,
     ...pcEntries
