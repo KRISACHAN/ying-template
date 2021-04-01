@@ -17,15 +17,17 @@ const postcssConfig = api => {
         }),
     ]
     if (api.file.indexOf('src/mobile') >= 0) {
-        plugins.push(pxToViewport({
-            unitToConvert: 'px',
-            viewportWidth: 750,
-            viewportHeight: 1334,
-            unitPrecision: 3,
-            viewportUnit: 'vw',
-            fontViewportUnit: 'vw',
-            mediaQuery: false,
-        }),)
+        plugins.push(
+            pxToViewport({
+                unitToConvert: 'px',
+                viewportWidth: 750,
+                viewportHeight: 1334,
+                unitPrecision: 3,
+                viewportUnit: 'vw',
+                fontViewportUnit: 'vw',
+                mediaQuery: false,
+            }),
+        )
     }
     return {
         plugins,

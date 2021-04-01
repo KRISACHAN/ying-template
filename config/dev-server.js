@@ -1,7 +1,7 @@
-const webpackDevServer = require('webpack-dev-server');
-const webpack = require('webpack');
+const webpackDevServer = require('webpack-dev-server')
+const webpack = require('webpack')
 
-const config = require('./webpack.config.dev.js');
+const config = require('./webpack.config.dev.js')
 const options = {
     contentBase: './dist',
     historyApiFallback: true,
@@ -14,15 +14,15 @@ const options = {
     proxy: {},
     https: false,
     open: true,
-};
+}
 
-webpackDevServer.addDevServerEntrypoints(config, options);
-const compiler = webpack(config);
-const server = new webpackDevServer(compiler, options);
+webpackDevServer.addDevServerEntrypoints(config, options)
+const compiler = webpack(config)
+const server = new webpackDevServer(compiler, options)
 
 server.listen(options.port, () => {
-  console.log(options.port);
-});
+    console.log(options.port)
+})
 
 // const webpackDevServer = require('webpack-dev-server');
 // const webpack = require('webpack');

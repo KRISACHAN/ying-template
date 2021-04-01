@@ -20,10 +20,7 @@ const genRouteConfigs = (routes, type) => {
     const entries = {}
 
     routes.forEach(entry => {
-        const {
-            key,
-            value
-        } = entry
+        const { key, value } = entry
         if (key === 'national-day') {
             return
         }
@@ -31,7 +28,7 @@ const genRouteConfigs = (routes, type) => {
             filename: `./${type}/${key}.html`,
             template: path.join(views, './tpl.ejs'),
             templateParameters: {
-                title: value
+                title: value,
             },
             inject: true,
         }
@@ -48,22 +45,25 @@ const genRouteConfigs = (routes, type) => {
 
     return {
         plugins,
-        entries
+        entries,
     }
 }
 
-const { entries: mobileEntries, plugins: mobileHtmlPlugins } = genRouteConfigs(routesMap.mobileRoutesMap, 'mobile')
-const { entries: pcEntries, plugins: pcHtmlPlugins } = genRouteConfigs(routesMap.pcRoutesMap, 'pc')
+const { entries: mobileEntries, plugins: mobileHtmlPlugins } = genRouteConfigs(
+    routesMap.mobileRoutesMap,
+    'mobile',
+)
+const { entries: pcEntries, plugins: pcHtmlPlugins } = genRouteConfigs(
+    routesMap.pcRoutesMap,
+    'pc',
+)
 
 const entries = {
     ...mobileEntries,
-    ...pcEntries
+    ...pcEntries,
 }
 
-const htmlPlugins = [
-    ...mobileHtmlPlugins,
-    ...pcHtmlPlugins
-]
+const htmlPlugins = [...mobileHtmlPlugins, ...pcHtmlPlugins]
 
 const baseConfig = {
     // 入口路径
