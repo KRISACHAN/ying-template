@@ -1,4 +1,9 @@
 import '@/style/demo.css'
+declare global {
+    interface Window {
+        jsBridge: boolean
+    }
+}
 
 class BaseBridge {
     constructor() {}
