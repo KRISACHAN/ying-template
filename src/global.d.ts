@@ -6,3 +6,10 @@ declare module '*.gif'
 declare module '*.bmp'
 declare module '*.tiff'
 declare module '*.webp'
+
+export {}
+declare global {
+    interface Window {
+        jsBridge: boolean
+    }
+}
