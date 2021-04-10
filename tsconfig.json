@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
+        "noEmitHelpers": true,
         "experimentalDecorators": true,
         "baseUrl": ".",
         "outDir": "./dist/",
         "noImplicitAny": true,
-        "module": "esnext",
-        "target": "es2020",
+        "module": "commonjs",
+        "target": "es5",
         "allowJs": true,
         "alwaysStrict": true,
         "watch": true,
