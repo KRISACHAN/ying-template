@@ -16,25 +16,31 @@
 
 ```bash
 # 安装依赖
-npm install
+yarn
 
 # 启动开发服务器
-npm run dev
+yarn dev
 
 # 项目打包
-npm run build
+yarn build
 
 # 单元测试
-npm run test
+yarn jest
 
-# 代码语法测试
-npm run lint
+# css 代码自动格式化
+yarn lint:css
+
+# js 代码自动格式化
+yarn lint:js
+
+# js & css 代码自动格式化
+yarn lint
 
 # 代码格式测试以及纠正
-npm run prettier
+yarn prettier
 
-# 一键上传源码
-npm run cz
+# 一键上传以及格式化源码
+yarn cz
 
 ```
 

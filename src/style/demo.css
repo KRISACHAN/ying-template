@@ -25,7 +25,6 @@ div {
 .grid {
     display: grid;
     grid: repeat(2, 240px) / auto-flow 320px;
-
     & > div {
         background-color: #8ca0ff;
         width: 200px;
