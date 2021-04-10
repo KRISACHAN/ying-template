@@ -15,6 +15,7 @@ const corePath = {
     src: resolve('src'),
     views: resolve('views'),
     dist: resolve('dist'),
+    style: resolve('src/style'),
 }
 // 资源文件路径
 const assetsPath = {
@@ -57,5 +58,7 @@ const config = {
     node_modules: corePath.nodeModules,
     // 静态资源文件夹
     static: corePath.static,
+    // 样式文件夹
+    style: corePath.style,
 }
 module.exports = config

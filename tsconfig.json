@@ -14,14 +14,16 @@
         "declaration": true,
         "importHelpers": true,
         "paths": {
-            "tslib" : ["node_modules/tslib/tslib.d.ts"],
             "@/*": ["src/*"],
             "src/*": ["src/*"],
             "tests/*": ["tests/*"],
             "core/*": ["core/*"],
             "static/*": ["static/*"]
         },
-        "typeRoots": ["node_modules/@types"],
+        "typeRoots": [
+            "node_modules/@types",
+            "node_modules/tslib"
+        ],
         "lib": [
             "esnext",
             "dom",
@@ -46,7 +48,7 @@
     ],
     "exclude": [
         "node_modules",
-        "**/*.spec.ts",
+        "**/*.test.ts",
         "**/dist/**",
         "**/static/**",
         "**/config/**"
