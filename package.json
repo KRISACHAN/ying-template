@@ -17,6 +17,7 @@
         "@babel/preset-typescript": "^7.6.0",
         "@babel/runtime": "^7.9.2",
         "@babel/runtime-corejs2": "^7.9.2",
+        "@fullhuman/postcss-purgecss": "^4.0.3",
         "@types/eslint": "^7.2.1",
         "@types/jest": "^24.0.23",
         "@types/node": "^12.12.8",
