@@ -2,8 +2,11 @@
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const webpackBase = require('./webpack.config.base.js')
+// https://www.npmjs.com/package/stylelint-webpack-plugin CSS 格式化
+const StyleLintPlugin = require('stylelint-webpack-plugin')
 const {
     dev: { include, exclude },
+    style,
 } = require('./config.js')
 
 const webpackDev = {
@@ -38,6 +41,14 @@ const webpackDev = {
             },
         ],
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()],
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new StyleLintPlugin({
+            configFile: './.stylelintrc',
+            context: style,
+            files: ['*.css', '**/*.css', '**/**/*.css', '**/**/**/*.css'],
+            formatter: 'unix',
+        }),
+    ],
 }
 module.exports = webpackMerge(webpackBase, webpackDev)

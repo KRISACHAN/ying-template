@@ -99,7 +99,13 @@ const webpackProd = {
                 test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: true,
+                        },
+                    },
                     'postcss-loader',
                 ],
             },

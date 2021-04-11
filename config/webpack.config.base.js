@@ -4,15 +4,13 @@ const fs = require('fs')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 // https://www.npmjs.com/package/copy-webpack-plugin 复制文件夹到构建目录
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-// https://www.npmjs.com/package/stylelint-webpack-plugin CSS 格式化
-const StyleLintPlugin = require('stylelint-webpack-plugin')
+
 const {
     views,
     src,
     root,
     dev: { alias, include, exclude },
     dist,
-    style,
 } = require('./config.js')
 // 生成 html 处理插件以及入口
 const genHTMLPluginsAndEntries = viewsPath => {
@@ -120,12 +118,6 @@ const baseConfig = {
                 to: 'static',
             },
         ]),
-        new StyleLintPlugin({
-            configFile: './.stylelintrc',
-            context: style,
-            files: ['*.css', '**/*.css', '**/**/*.css', '**/**/**/*.css'],
-            formatter: 'unix',
-        }),
     ],
 }
 module.exports = baseConfig
