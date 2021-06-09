@@ -7,8 +7,8 @@
                 "corejs": 3,
                 "targets": {
                     "esmodules": true,
-                    "chrome": "60",
-                    "ie": "10"
+                    "chrome": "74",
+                    "ie": "11"
                 }
             }
         ],

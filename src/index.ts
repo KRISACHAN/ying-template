@@ -24,8 +24,6 @@ window.onload = () => {
         `,
     )
     console.groupEnd()
-
-    const a = '100'
 }
 
 export const add = (a: number, b: number): number => a + b
