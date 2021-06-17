@@ -106,7 +106,8 @@
         "lint:css": "cross-env NODE_ENV=development stylelint 'src/**/*.css' --fix",
         "lint": "yarn lint:js && yarn lint:css",
         "prettier": "cross-env NODE_ENV=development prettier config src tests *.js .*.js --write",
-        "cz": "yarn jest && yarn lint && yarn prettier && git add . && git cz && git push"
+        "cz": "yarn jest && yarn lint && yarn prettier && git add . && git cz && git push",
+        "proxy": "cross-env NODE_ENV=development nodemon ./config/proxy-server.js"
     },
     "keywords": [
         "javascript",
