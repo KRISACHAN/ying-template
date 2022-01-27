@@ -1,6 +1,7 @@
 const path = require('path')
 const tsconfig = require('./tsconfig.json')
 const moduleNameMapper = require('tsconfig-paths-jest')(tsconfig)
+// Maybe you can check: https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping
 const jestConfig = {
     rootDir: path.join(__dirname, ''),
     roots: ['<rootDir>/tests'],
