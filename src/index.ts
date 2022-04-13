@@ -1,5 +1,6 @@
 import '@/style/index.css'
 import qrcodeImg from 'static/img/qrcode-all1.png'
+import test from '@/core/test'
 
 window.onload = () => {
     const radio = 0.25
@@ -26,6 +27,7 @@ window.onload = () => {
     console.groupEnd()
 
     const a = '100'
+    test()
 }
 
 export const add = (a: number, b: number): number => a + b

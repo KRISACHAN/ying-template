@@ -55,9 +55,12 @@ const baseConfig = {
     // 入口路径
     context: root,
     entry: entries,
+    // https://webpack.js.org/concepts/output/#root
     output: {
         // 打包路径
         path: dist,
+        // https://webpack.js.org/configuration/output/#librarytarget-umd
+        libraryTarget: 'umd',
     },
     resolve: {
         // 文件名简写
@@ -109,6 +112,7 @@ const baseConfig = {
             },
         ],
     },
+    // https://webpack.js.org/configuration/externals/#root
     externals: {},
     plugins: [
         ...htmlPlugins,
