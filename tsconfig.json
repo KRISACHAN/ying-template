@@ -1,12 +1,13 @@
 {
+    "$schema": "https://json.schemastore.org/tsconfig",
     "compilerOptions": {
         "noEmitHelpers": true,
         "experimentalDecorators": true,
         "baseUrl": ".",
         "outDir": "./dist/",
         "noImplicitAny": true,
-        "module": "commonjs",
-        "target": "ES2019",
+        "module": "ESNext",
+        "target": "ESNext",
         "allowJs": true,
         "alwaysStrict": true,
         "watch": true,
@@ -21,34 +22,12 @@
             "core/*": ["core/*"],
             "static/*": ["static/*"]
         },
-        "typeRoots": [
-            "node_modules/@types",
-            "node_modules/tslib"
-        ],
-        "lib": [
-            "esnext",
-            "dom",
-            "es5",
-            "scripthost",
-            "es2015.promise",
-            "es2015",
-            "es2016",
-            "es2017",
-            "es2018",
-            "es2019",
-            "es2020"
-        ]
+        "typeRoots": ["node_modules/@types", "node_modules/tslib"],
+        "lib": ["DOM", "ESNext"]
     },
-    "include": [
-        "src/*.*",
-        "src/**/*.*",
-        "src/**/**/*.*",
-        "tests/**/**/*.*",
-        "tests/**/**/*.*",
-        "tests/**/**/*.*"
-    ],
+    "include": ["src", "tests"],
     "exclude": [
-        "node_modules",
+        "**/node_modules/**",
         "**/*.test.ts",
         "**/dist/**",
         "**/static/**",
