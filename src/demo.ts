@@ -1,4 +1,5 @@
 import '@/style/demo.css'
+import test from '@/core/test'
 declare global {
     interface Window {
         jsBridge: boolean
@@ -90,3 +91,6 @@ class Bridge {
 const bridge = new Bridge()
 bridge.login()
 console.log(bridge.envs)
+
+const a = '100'
+test()

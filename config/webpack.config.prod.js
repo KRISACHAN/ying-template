@@ -14,7 +14,11 @@ const compressionPlugin = require('compression-webpack-plugin')
 // https://www.npmjs.com/package/webpack-bundle-analyzer 可视化的输出文件详情
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const webpackBase = require('./webpack.config.base.js')
-const { root, prod } = require('./config.js')
+const {
+    root,
+    prod,
+    dev: { include, exclude },
+} = require('./config.js')
 
 const plugins = [
     new MiniCssExtractPlugin({
@@ -96,19 +100,27 @@ const webpackProd = {
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /\.css$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            importLoaders: true,
-                        },
-                    },
+                    'css-loader',
                     'postcss-loader',
                 ],
             },
+            // {
+            //     test: /\.css$/,
+            //     use: [
+            //         // 'style-loader',
+            //         {
+            //             loader: "css-loader",
+            //             options: {
+            //                 modules: true,
+            //                 importLoaders: 1,
+            //             },
+            //           },
+            //         // 'postcss-loader'
+            //     ],
+            // },
         ],
     },
     plugins,

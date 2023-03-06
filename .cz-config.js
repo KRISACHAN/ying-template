@@ -25,10 +25,6 @@ const czConfig = {
             value: 'revert',
             name: '回退: 代码回退',
         },
-        {
-            value: 'revert',
-            name: '回退: 代码回退',
-        },
     ],
     scopes: [
         { name: 'config' },
