@@ -65,7 +65,8 @@ yarn prepare
 ├─.gitignore // git 忽略配置
 ├─.prettierignore // prettier 忽略配置
 ├─.prettierrc // prettier 配置
-├─.stylelintrc //stylelint 配置
+├─.stylelintignore // stylelint 忽略配置
+├─.stylelintrc // stylelint 配置
 ├─Dockerfile // docker 配置
 ├─LICENSE // LICENSE许可
 ├─README.md // 项目说明文档
