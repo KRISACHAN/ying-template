@@ -175,10 +175,6 @@ const czConfig = {
             value: 'revert',
             name: '回退: 代码回退',
         },
-        {
-            value: 'revert',
-            name: '回退: 代码回退',
-        },
     ],
 }
 ```
@@ -474,4 +470,3 @@ https://webpack.js.org/configuration/resolve/#resolvealias
 也可以扫码关注公众号，订阅更多精彩内容。
 
 ![./static/img/qrcode-all1.png](./static/img/qrcode-all1.png)
-

@@ -3,9 +3,8 @@ const pxToViewport = require('postcss-px-to-viewport')
 
 const postcssConfig = {
     plugins: [
-        /**
-         * @url https://cssdb.org/
-         */
+        // 文档：https://github.com/csstools/precss
+        // 配置说明：https://cssdb.org/
         precss({
             stage: 3,
             features: {

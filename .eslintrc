@@ -40,7 +40,10 @@
         "@typescript-eslint/no-explicit-any": 2,
         "prettier/prettier": "error",
         "no-var": "error",
-        "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+        "@typescript-eslint/consistent-type-definitions": [
+            "error",
+            "interface"
+        ],
         "no-empty-function": ["error", { "allow": ["constructors"] }],
         "@typescript-eslint/no-empty-function": "off"
     }
