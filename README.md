@@ -238,7 +238,7 @@ module.exports = {
 }
 ```
 
-CV 自 [前端代码风格自动化系列（二）之Commitlint](https://segmentfault.com/a/1190000017790694)
+CV 自 [规范化Git提交日志（Commitizen + husky + Git hooks ）](https://juejin.cn/post/7038550916106027044)
 
 文档链接：https://commitlint.js.org/#/
 
