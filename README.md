@@ -36,11 +36,17 @@ yarn lint:js
 # js & css 代码自动格式化
 yarn lint
 
-# 代码格式测试以及纠正
+# 核心代码格式测试以及纠正
 yarn prettier
+
+# 所有代码格式测试以及纠正
+prettier:all
 
 # 一键上传以及格式化源码
 yarn cz
+
+# 安装 husky
+yarn prepare
 
 ```
 
@@ -49,38 +55,43 @@ yarn cz
 ### **项目结构**
 
 ```txt
-│  .babelrc // babel配置文件
-│  .editorconfig // 编辑器配置
-│  .env // 环境变量配置
-│  .eslintignore // eslint忽略配置
-│  .eslintrc // eslint配置
-│  .gitignore // git忽略配置
-│  .prettierignore // prettier忽略配置
-│  .prettierrc // prettier配置
-│  build.sh // bash脚本
-│  jest.config.js // Jest配置文件
-│  LICENSE // LICENSE许可
-│  package-lock.json
-│  package.json
-│  postcss.config.js // postcss配置文件
-│  README.md // 项目说明文档
-│  tsconfig.json // ts语言配置
-│
-├─config // 核心配置
-│      config.js // 根配置
-│      webpack.config.base.js // 基础配置
-│      webpack.config.dev.js // 开发环境配置
-│      webpack.config.prod.js // 生产环境配置
-│
-├─coverage // 单元测试结果文件
-|
-├─src // 用户代码
-│
-├─static // 静态资源
-│
+├─.babelrc // babel配置文件
+├─.browserslistrc // 浏览器兼容配置
+├─.cz-config.js // commitizen 配置
+├─.editorconfig // 编辑器配置
+├─.env // 环境变量配置
+├─.eslintignore // eslint 忽略配置
+├─.eslintrc // eslint 配置
+├─.gitignore // git 忽略配置
+├─.prettierignore // prettier 忽略配置
+├─.prettierrc // prettier 配置
+├─.stylelintrc //stylelint 配置
+├─Dockerfile // docker 配置
+├─LICENSE // LICENSE许可
+├─README.md // 项目说明文档
+├─commitlint.config.js // commitlint 配置
+├─default.conf // 项目运行 nginx 配置
+├─docker-compose.yml
+├─fileMock.js // jest 兼容文件夹
+├─jest.config.js // Jest 配置文件
+├─nginx.conf // 项目运行 nginx 配置
+├─package.json
+├─postcss.config.js // postcss 配置文件
+├─tsconfig.json // ts 配置
+├─yarn.lock
+├─views // 页面文件夹
 ├─tests // 测试文件夹
-│
-└─views // 页面目标
+├─static // 静态资源文件夹
+├─src // 核心代码
+├─dist // 构建产物
+├─coverage // 单元测试结果文件夹
+├─config // 核心配置夹
+|   ├─config.js // 根配置
+|   ├─dev-server.js // 开发环境服务器
+|   ├─webpack.config.base.js // 基础配置
+|   ├─webpack.config.dev.js // 开发环境配置
+|   └webpack.config.prod.js // 生产环境配置
+├─.husky
 ```
 
 ### 格式化方案
@@ -131,10 +142,15 @@ yarn cz
             "allowTypedFunctionExpressions": true
         }
     ],
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": 2,
     "prettier/prettier": "error",
     "no-var": "error",
-    "@typescript-eslint/consistent-type-definitions": ["error", "interface"]
+    "@typescript-eslint/consistent-type-definitions": [
+        "error",
+        "interface"
+    ],
+    "no-empty-function": ["error", { "allow": ["constructors"] }],
+    "@typescript-eslint/no-empty-function": "off"
 }
 ```
 
@@ -186,6 +202,44 @@ CV 自 [Cz 工具集使用介绍 - 规范 Git 提交说明](https://juejin.im/po
 文档链接：
 
 https://github.com/leoforfree/cz-customizable
+
+### commit 信息检测
+
+用 `husky` + `commitlint` 进行检测 commit 信息检测，配置代码如下：
+
+```javascript
+// ./commitlint.config.js
+module.exports = {
+    extends: ['@commitlint/config-conventional'],
+    // 定义规则类型
+    rules: {
+        // type 类型定义，表示 git 提交的 type 必须在以下类型范围内
+        'type-enum': [
+            2,
+            'always',
+            [
+                'feat', // 新功能
+                'fix', //  修复
+                'docs', // 文档变更
+                'style', // 代码格式（不影响代码运行的变动）
+                'refactor', // 重构（既不是增加feature）,也不是修复bug
+                'pref', // 性能优化
+                'test', // 增加测试
+                'build', // 打包
+                'ci', // 集成
+                'style', // 代码格式
+                'revert', // 回退
+            ],
+        ],
+        // subject 大小写不做校验
+        'subject-case': [0],
+    },
+}
+```
+
+CV 自 [前端代码风格自动化系列（二）之Commitlint](https://segmentfault.com/a/1190000017790694)
+
+文档链接：https://commitlint.js.org/#/
 
 ### 容器化
 
@@ -290,19 +344,29 @@ ECMA 语法的基础方案为`@babel/preset-env`，主要配置如下：
 ```javascript
 // ./.babelrc
 "presets": [
-  [
-    "@babel/preset-env",
-    {
-      "useBuiltIns": "usage",
-      "corejs": 3,
-      "targets": {
-        "esmodules": true,
-        "chrome": "60",
-        "ie": "10"
-      }
-    }
-  ],
-  "@babel/preset-typescript"
+    // 文档：https://babeljs.io/docs/babel-preset-env
+    [
+        "@babel/preset-env",
+        {
+            // 配置：https://babeljs.io/docs/options#targets
+            "targets": {
+                "esmodules": true
+            },
+            // 配置：https://babeljs.io/docs/babel-preset-env#usebuiltins
+            "useBuiltIns": "usage",
+            // 配置：https://babeljs.io/docs/babel-preset-env#corejs
+            "corejs": {
+                "version": 3,
+                "proposals": true
+            }
+        }
+    ],
+    [
+        "@babel/preset-typescript",
+        {
+            "optimizeConstEnums": true
+        }
+    ]
 ],
 ```
 
@@ -317,7 +381,9 @@ ECMA 语法的基础方案为`@babel/preset-env`，主要配置如下：
 ```javascript
 // ./.babelrc
 "plugins": [
+    // 文档：https://babeljs.io/docs/babel-plugin-transform-runtime
     "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-arrow-functions",
     "@babel/plugin-proposal-optional-chaining",
     [
         "@babel/plugin-proposal-class-properties",
