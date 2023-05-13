@@ -99,9 +99,6 @@
         "webpack-dev-server": "^3.11.2",
         "webpack-merge": "^4.2.1"
     },
-    "peerDependencies": {
-        "postcss": "^8.2.13"
-    },
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --progress --config ./config/webpack.config.prod.js",
         "dev": "cross-env NODE_ENV=development nodemon ./config/dev-server.js",
@@ -129,9 +126,6 @@
     ],
     "author": "chenjinwen77@foxmail.com",
     "license": "MIT",
-    "engines": {
-        "node": ">=6.11.5"
-    },
     "config": {
         "commitizen": {
             "path": "node_modules/cz-customizable"
