@@ -2,7 +2,7 @@
 
 ## 项目信息
 
-这是一个基于 `webpack@^5.27.2` + `typescript@^4.2.3` + `@babel/core@^7.2.2` + `jest@^26.6.3` + `eslint@^7.22.0` 的多页面脚手架。
+这是一个基于 `webpack@^5.27.2` + `typescript@^4.2.3` + `esbuild-loader@^3.0.1,` + `jest@^26.6.3` + `eslint@^7.22.0` 的多页面脚手架。
 
 本库支持增量更新，支持 `gzip` 打包，支持第三方资源别名引入，支持静态文件引入，支持使用环境变量。
 
@@ -55,7 +55,6 @@ yarn prepare
 ### **项目结构**
 
 ```txt
-├─.babelrc // babel配置文件
 ├─.browserslistrc // 浏览器兼容配置
 ├─.cz-config.js // commitizen 配置
 ├─.editorconfig // 编辑器配置
@@ -340,72 +339,21 @@ precss({
 
 #### 基础方案
 
-ECMA 语法的基础方案为`@babel/preset-env`，主要配置如下：
+ECMA 语法的基础方案为 `esbuild-loader`，主要配置如下：
 
 ```javascript
-// ./.babelrc
-"presets": [
-    // 文档：https://babeljs.io/docs/babel-preset-env
-    [
-        "@babel/preset-env",
-        {
-            // 配置：https://babeljs.io/docs/options#targets
-            "targets": {
-                "esmodules": true
-            },
-            // 配置：https://babeljs.io/docs/babel-preset-env#usebuiltins
-            "useBuiltIns": "usage",
-            // 配置：https://babeljs.io/docs/babel-preset-env#corejs
-            "corejs": {
-                "version": 3,
-                "proposals": true
-            }
-        }
-    ],
-    [
-        "@babel/preset-typescript",
-        {
-            "optimizeConstEnums": true
-        }
-    ]
-],
+// ./config/webpack.config.base.js
+{
+    loader: 'esbuild-loader',
+    options: {
+        loader: 'tsx',
+        target: 'esnext',
+        tsconfig: './tsconfig.json'
+    },
+},
 ```
 
-`@babel/preset-env`文档如下：
-
-<https://babeljs.io/docs/en/babel-preset-env>
-
-#### 拓展语法
-
-可按需增删需要的 ECMA 提案插件，主要配置如下：
-
-```javascript
-// ./.babelrc
-"plugins": [
-    // 文档：https://babeljs.io/docs/babel-plugin-transform-runtime
-    "@babel/plugin-transform-runtime",
-    "@babel/plugin-transform-arrow-functions",
-    "@babel/plugin-proposal-optional-chaining",
-    [
-        "@babel/plugin-proposal-class-properties",
-        {
-            "loose": true
-        }
-    ],
-    [
-        "@babel/plugin-proposal-decorators",
-        {
-            "legacy": true
-        }
-    ],
-    [
-        "@babel/plugin-proposal-private-methods",
-        {
-            "loose": true
-        }
-    ]
-]
-```
+已用 `esbuild-loader` 代替了 `babel-loader`，在 2023 的今年，不再考虑打包到 es5 代码
 
 ### typescript
 
@@ -438,7 +386,7 @@ IS_MOBILE=false # 判断是否是移动端，如果是，则打开postcss-px-to-
 
 **jest** 测试 **dom** 时，相关代码需要包裹在 **window.onload** 里，否则会报错。例如
 
-```
+```javascript
 'use strict'
 import '@/style/index.css'
 import qrcodeImg from 'static/img/qrcode-all1.png'

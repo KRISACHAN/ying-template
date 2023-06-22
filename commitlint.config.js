@@ -14,9 +14,11 @@ module.exports = {
                 'refactor', // 重构（既不是增加feature）,也不是修复bug
                 'pref', // 性能优化
                 'test', // 增加测试
+                'wip', // 半成品: 开发中
                 'build', // 打包
                 'ci', // 集成
                 'style', // 代码格式
+                'chore', // 构建: 变更构建流程或辅助工具
                 'revert', // 回退
             ],
         ],

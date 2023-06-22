@@ -100,10 +100,11 @@ const baseConfig = {
                     // https://www.npmjs.com/package/thread-loader 将下方的 loader 放入 worker 池里。每个 worker 都是一个单独的有 600ms 限制的 node.js 进程。同时跨进程的数据交换也会被限制。
                     'thread-loader',
                     {
-                        loader: 'babel-loader',
+                        loader: 'esbuild-loader',
                         options: {
-                            cacheDirectory: true,
-                            cacheCompression: true,
+                            loader: 'tsx',
+                            target: 'es2015',
+                            tsconfig: './tsconfig.json',
                         },
                     },
                 ],

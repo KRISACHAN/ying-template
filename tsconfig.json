@@ -8,7 +8,7 @@
         "outDir": "./dist/",
         "noImplicitAny": true,
         "module": "ESNext",
-        "target": "ESNext",
+        "target": "ES2015",
         "allowJs": true,
         "alwaysStrict": true,
         "watch": true,
