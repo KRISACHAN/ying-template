@@ -7,22 +7,17 @@ module.exports = {
             2,
             'always',
             [
-                'feat', // 新功能
+                'feat', // 特性
                 'fix', //  修复
-                'docs', // 文档变更
-                'style', // 代码格式（不影响代码运行的变动）
-                'refactor', // 重构（既不是增加feature）,也不是修复bug
-                'pref', // 性能优化
-                'test', // 增加测试
-                'wip', // 半成品: 开发中
+                'docs', // 文档
+                'refactor', // 重构
+                'wip', // 半成品
                 'build', // 打包
                 'ci', // 集成
-                'style', // 代码格式
-                'chore', // 构建: 变更构建流程或辅助工具
+                'chore', // 辅助
                 'revert', // 回退
             ],
         ],
-        // subject 大小写不做校验
         'subject-case': [0],
     },
 }

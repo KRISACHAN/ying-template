@@ -120,7 +120,9 @@
     },
     "lint-staged": {
         "src/**/*.{js,ts,jsx,tsx}": [
-            "eslint --fix",
+            "yarn jest",
+            "yarn lint",
+            "yarn prettier",
             "git add ."
         ]
     }
