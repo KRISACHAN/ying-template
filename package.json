@@ -122,8 +122,7 @@
         "src/**/*.{js,ts,jsx,tsx}": [
             "yarn jest",
             "yarn lint",
-            "yarn prettier",
-            "git add ."
+            "yarn prettier"
         ]
     }
 }
